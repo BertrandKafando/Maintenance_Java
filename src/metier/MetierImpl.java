@@ -144,17 +144,39 @@ public class MetierImpl implements IMetier{
 
     @Override
     public void ajouterMateriel(Materiel materiel) {
-
+        Connection connection= SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement stm=connection.prepareStatement("insert into materiel(designation) values (?)");
+            stm.setString(1,materiel.getDesignation());
+            stm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
     public void supprimerMateriel(Materiel materiel) {
-
+        Connection conn=SingletonConnexionDB.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("delete from materiel where id_materiel=?");
+            pstm.setInt(1,materiel.getId_materiel());
+            pstm.execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void modifierMateriel(Materiel materiel) {
-
+        Connection connection=SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement stm=connection.prepareStatement("update materiel set nom=? where id_materiel=?");
+            stm.setInt(1,materiel.getId_materiel());
+            stm.setString(2,materiel.getDesignation());
+            stm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
