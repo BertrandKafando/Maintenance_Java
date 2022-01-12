@@ -75,13 +75,28 @@ public class MetierImpl implements IMetier{
             pstm.setInt(1,it.getIdIntervenant);
             ResultSet rs= pstm.executeQuery();
             while (rs.next()){
+                PreparedStatement pstm1=conn.prepareStatement("select * from RESPONSABLE where ID_RESPON=?");
+                pstm1.setInt(1,rs.getInt("ID_RESPONSABLE"));
+                ResultSet rs1= pstm1.executeQuery();
+                Responsable r=null;
+                if(rs1.next()){
+                    r=new Responsable(rs1.getInt("ID_RESPON"),rs1.getString("NOM"),rs1.getString("PRENOM"),rs1.getString("EMAIL"),
+                            rs1.getString("TELEPHONE"), rs1.getString("ADRESSE"),rs1.getString("PASSWORD"));
+                }
+                PreparedStatement pstm2=conn.prepareStatement("select * from ENTREPRISE where ID=?");
+                pstm2.setInt(1,rs.getInt("ID_ENTREPRISE"));
+                ResultSet rs2= pstm2.executeQuery();
+                Entreprise e=null;
+                if(rs2.next()){
+                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
+                }
                 OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
-                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"), ,it,);
-                profs.add(p);
+                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
+                ordreTravails.add(ot);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return  profs;
+        return  ordreTravails;
     }
 }
