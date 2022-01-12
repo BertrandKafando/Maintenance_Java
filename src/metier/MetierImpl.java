@@ -105,7 +105,7 @@ public class MetierImpl implements IMetier{
     public void ajouterResponsable(Responsable responsable) {
         Connection connection= SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement stm=connection.prepareStatement("insert into responable(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+            PreparedStatement stm=connection.prepareStatement("insert into responsable(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
             stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
             stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
             stm.executeUpdate();
@@ -132,7 +132,7 @@ public class MetierImpl implements IMetier{
     public void modifierlesinformations(Responsable responsable) {
         Connection connection=SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement stm=connection.prepareStatement("update responable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_");
+            PreparedStatement stm=connection.prepareStatement("update responsable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_");
             stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
             stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
             stm.executeUpdate();
@@ -181,16 +181,40 @@ public class MetierImpl implements IMetier{
 
     @Override
     public void ajouterEntreprise(Entreprise entreprise) {
+        Connection connection=SingletonConnexionDB.getConnection();
+        try {
+            PreparedStatement pstm=connection.prepareStatement("insert into entreprise(nom,telephone,email) values (?,?,?)");
+            pstm.setString(1,entreprise.getNom()); pstm.setString(2,entreprise.getTelephone()); pstm.setString(3,entreprise.getEmail());
+            pstm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
     @Override
     public void supprimerEntreprise(Entreprise entreprise) {
+        Connection connection=SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement pstm=connection.prepareStatement("delete from entreprise where id_depart=?");
+            pstm.setInt(1,entreprise.getId_entr());
+            pstm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
     }
 
     @Override
     public void modifierEntreprise(Entreprise entreprise) {
-
+        Connection connection=SingletonConnexionDB.getConnection();
+        try {
+            PreparedStatement pstm=connection.prepareStatement("update entreprise set nom=?,telephone=?,email=?");
+            pstm.setString(1,entreprise.getNom()); pstm.setString(2,entreprise.getTelephone()); pstm.setString(3,entreprise.getEmail());
+            pstm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
