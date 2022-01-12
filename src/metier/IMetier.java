@@ -21,4 +21,12 @@ public interface IMetier {
     void supprimerEntreprise(Entreprise entreprise);
     void modifierEntreprise(Entreprise entreprise);
 
+
+    Intervenant searchInterById(int id);
+    Intervenant searchInterByName(String name);
+    void AddInter(Intervenant inter);
+    void deleteInter(int id);
+    void updateInter(Intervenant inter);
+    List<Intervenant> getAllInter();
+
 }
