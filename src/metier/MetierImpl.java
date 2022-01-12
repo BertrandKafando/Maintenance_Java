@@ -5,6 +5,7 @@ import DAO.SingletonConnexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class MetierImpl implements IMetier{
             pstm.setDouble(5,ot.getBudget());
             pstm.setInt(6,ot.getPriorite());
             pstm.setBoolean(7, ot.isEtat());
-            pstm.setInt(8,ot.getResponsable().getIdRespon);
+            pstm.setInt(8,ot.getResponsable().getId_respon());
             pstm.setInt(9,ot.getIntervenant().getIdIntervenant);
             pstm.setInt(10,ot.getEntreprise().getId);
             pstm.executeUpdate();
@@ -44,9 +45,9 @@ public class MetierImpl implements IMetier{
             pstm.setDouble(5,ot.getBudget());
             pstm.setInt(6,ot.getPriorite());
             pstm.setBoolean(7, ot.isEtat());
-            pstm.setInt(8,ot.getResponsable().getIdRespon);
+            pstm.setInt(8,ot.getResponsable().getId_respon());
             pstm.setInt(9,ot.getIntervenant().getIdIntervenant);
-            pstm.setInt(10,ot.getEntreprise().getId);
+            pstm.setInt(10,ot.getEntreprise().getId_entr());
             pstm.setInt(11, ot.getNumOrdreTravail());
             pstm.execute();
         } catch (Exception e) {
@@ -98,5 +99,76 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
         return  ordreTravails;
+    }
+
+    @Override
+    public void ajouterResponsable(Responsable responsable) {
+        Connection connection= SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement stm=connection.prepareStatement("insert into responable(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+            stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
+            stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
+            stm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void supprimerResponsable(Responsable responsable) {
+        Connection connection=SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement pstm=connection.prepareStatement("delete from responsable where id_depart=?");
+            pstm.setInt(1,responsable.getId_respon());
+            pstm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void modifierlesinformations(Responsable responsable) {
+        Connection connection=SingletonConnexionDB.getConnection();
+        try{
+            PreparedStatement stm=connection.prepareStatement("update responable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_");
+            stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
+            stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
+            stm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void ajouterMateriel(Materiel materiel) {
+
+    }
+
+    @Override
+    public void supprimerMateriel(Materiel materiel) {
+
+    }
+
+    @Override
+    public void modifierMateriel(Materiel materiel) {
+
+    }
+
+    @Override
+    public void ajouterEntreprise(Entreprise entreprise) {
+
+    }
+
+    @Override
+    public void supprimerEntreprise(Entreprise entreprise) {
+
+    }
+
+    @Override
+    public void modifierEntreprise(Entreprise entreprise) {
+
     }
 }

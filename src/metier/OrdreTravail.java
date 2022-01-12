@@ -1,6 +1,8 @@
 package metier;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class OrdreTravail {
     private int numOrdreTravail;
@@ -14,6 +16,7 @@ public class OrdreTravail {
     private Responsable responsable;
     private Intervenant intervenant;
     private Entreprise entreprise;
+    List<Materiel>materiels=new ArrayList<>();
 
     public OrdreTravail(int numOrdreTravail, Date date, String typeService, String description, int temps, double budget, int priorite, boolean etat, Responsable responsable, Intervenant intervenant, Entreprise entreprise) {
         this.numOrdreTravail = numOrdreTravail;
