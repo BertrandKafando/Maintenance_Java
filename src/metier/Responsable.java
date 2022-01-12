@@ -11,6 +11,18 @@ public class Responsable {
     private String adresse;
     private String password;
 
+    public Responsable(String nom, String prenom, String email, String telephone, String adresse, String password) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.password = password;
+    }
+
+    public Responsable() {
+    }
+
     public Responsable(int id_respon, String nom, String prenom, String email, String telephone, String adresse, String password) {
         this.id_respon = id_respon;
         this.nom = nom;

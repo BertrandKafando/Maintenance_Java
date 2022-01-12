@@ -112,11 +112,12 @@ public class MetierImpl implements IMetier{
 
     }
 
+
     @Override
     public void supprimerResponsable(Responsable responsable) {
         Connection connection=SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement pstm=connection.prepareStatement("delete from responsable where id_depart=?");
+            PreparedStatement pstm=connection.prepareStatement("delete from responsable where id_respon=?");
             pstm.setInt(1,responsable.getId_respon());
             pstm.executeUpdate();
         } catch (SQLException throwables) {
@@ -137,6 +138,30 @@ public class MetierImpl implements IMetier{
             throwables.printStackTrace();
         }
 
+    }
+
+    @Override
+    public Responsable getResponsable() {
+        Connection connection=SingletonConnexionDB.getConnection();
+        Responsable responsable=new Responsable();
+        try{
+            PreparedStatement stm=connection.prepareStatement("select * from responsable ");
+            ResultSet res= stm.executeQuery();
+            if(res.next()){
+                responsable.setId_respon(res.getInt(1));responsable.setNom(res.getString(2));responsable.setPrenom(res.getString(3));
+                responsable.setEmail(res.getString(4));responsable.setTelephone(res.getString(5));responsable.setAdresse(res.getString(6));
+                responsable.setPassword(res.getString(7));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return responsable;
+    }
+
+    @Override
+    public List<Responsable> getResponsables() {
+        return null;
     }
 
     @Override
@@ -177,6 +202,16 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
+    public List<Materiel> getMateriels() {
+        return null;
+    }
+
+    @Override
+    public List<Materiel> getMaterielsbyordres(OrdreTravail odt) {
+        return null;
+    }
+
+    @Override
     public void ajouterEntreprise(Entreprise entreprise) {
         Connection connection=SingletonConnexionDB.getConnection();
         try {
@@ -193,7 +228,7 @@ public class MetierImpl implements IMetier{
     public void supprimerEntreprise(Entreprise entreprise) {
         Connection connection=SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement pstm=connection.prepareStatement("delete from entreprise where id_depart=?");
+            PreparedStatement pstm=connection.prepareStatement("delete from entreprise where id_entr=?");
             pstm.setInt(1,entreprise.getId_entr());
             pstm.executeUpdate();
         } catch (SQLException throwables) {
@@ -213,6 +248,11 @@ public class MetierImpl implements IMetier{
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Entreprise> getEntrprises() {
+        return null;
     }
 
     @Override

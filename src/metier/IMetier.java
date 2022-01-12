@@ -11,15 +11,20 @@ public interface IMetier {
     void ajouterResponsable(Responsable responsable);
     void supprimerResponsable(Responsable responsable);
     void modifierlesinformations(Responsable responsable);
+    Responsable getResponsable();
+    List<Responsable>getResponsables();
 
     void ajouterMateriel(Materiel materiel);
     void supprimerMateriel(Materiel materiel);
     void modifierMateriel(Materiel materiel);
+    List<Materiel>getMateriels();
+    List<Materiel>getMaterielsbyordres(OrdreTravail odt);
 
 
     void ajouterEntreprise(Entreprise entreprise);
     void supprimerEntreprise(Entreprise entreprise);
     void modifierEntreprise(Entreprise entreprise);
+    List<Entreprise>getEntrprises();
 
 
     Intervenant searchInterById(int id);
