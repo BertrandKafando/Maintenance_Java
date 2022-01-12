@@ -76,8 +76,7 @@ public class MetierImpl implements IMetier{
             ResultSet rs= pstm.executeQuery();
             while (rs.next()){
                 OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
-                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),
-                        rs.getString("DATE_RECRUTEMENT"),d);
+                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"), ,it,);
                 profs.add(p);
             }
         }catch (Exception e){
