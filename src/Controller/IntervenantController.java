@@ -44,7 +44,6 @@ public class IntervenantController implements Initializable {
         otResponsable.setCellValueFactory(new PropertyValueFactory<>("responsable"));
 
         metier = new MetierImpl();
-        liste.addAll(metier.get);
         tableOts.setItems(liste);
 
     }

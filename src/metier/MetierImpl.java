@@ -99,6 +99,50 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
+    public List<OrdreTravail> getAllOrdreTravail() {
+        Connection conn=SingletonConnexionDB.getConnection();
+        List<OrdreTravail> ordreTravails=new ArrayList<>();
+        try {
+            PreparedStatement pstm=conn.prepareStatement("select * from ORDRETRAVAIL ");
+            ResultSet rs= pstm.executeQuery();
+            while (rs.next()){
+                PreparedStatement pstm1=conn.prepareStatement("select * from RESPONSABLE where ID_RESPON=?");
+                pstm1.setInt(1,rs.getInt("ID_RESPONSABLE"));
+                ResultSet rs1= pstm1.executeQuery();
+                Responsable r=null;
+                if(rs1.next()){
+                    r=new Responsable(rs1.getInt("ID_RESPON"),rs1.getString("NOM"),rs1.getString("PRENOM"),rs1.getString("EMAIL"),
+                            rs1.getString("TELEPHONE"), rs1.getString("ADRESSE"),rs1.getString("PASSWORD"));
+                }
+
+                PreparedStatement pstm2=conn.prepareStatement("select * from ENTREPRISE where ID=?");
+                pstm2.setInt(1,rs.getInt("ID_ENTREPRISE"));
+                ResultSet rs2= pstm2.executeQuery();
+                Entreprise e=null;
+                if(rs2.next()){
+                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
+                }
+
+                PreparedStatement stm=conn.prepareStatement("select * from intervenant where id_intervenant=?");
+                stm.setInt(1,rs.getInt("id_intervenant "));
+                ResultSet rs3=stm.executeQuery();
+                Intervenant it=null;
+                if(rs3.next()){
+                    it=new Intervenant(rs3.getInt("id_intervenant"),rs3.getString("nom"),rs3.getString("prenom"),rs3.getString("email"),rs3.getString("telephone"),
+                            rs3.getString("adresse"),rs3.getString("password"));
+                }
+
+                OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
+                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
+                ordreTravails.add(ot);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  ordreTravails;
+    }
+
+    @Override
     public void ajouterResponsable(Responsable responsable) {
         Connection connection= SingletonConnexionDB.getConnection();
         try{
