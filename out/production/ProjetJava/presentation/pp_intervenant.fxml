@@ -19,14 +19,14 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tableOts" layoutX="4.0" layoutY="99.0" prefHeight="295.0" prefWidth="451.0">
+      <TableView layoutX="4.0" layoutY="99.0" prefHeight="295.0" prefWidth="451.0">
         <columns>
-          <TableColumn fx:id="otService" prefWidth="75.0" text="Service" />
-          <TableColumn fx:id="otDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="otPriorite" prefWidth="75.0" text="Priorité" />
-            <TableColumn fx:id="otEtat" prefWidth="75.0" text="Etat" />
-            <TableColumn fx:id="otEntreprise" prefWidth="75.0" text="Entreprise" />
-            <TableColumn fx:id="otResponsable" prefWidth="75.0" text="Responsable" />
+          <TableColumn prefWidth="75.0" text="Service" />
+          <TableColumn prefWidth="75.0" text="Description" />
+            <TableColumn prefWidth="75.0" text="Priorité" />
+            <TableColumn prefWidth="75.0" text="Etat" />
+            <TableColumn prefWidth="75.0" text="Entreprise" />
+            <TableColumn prefWidth="75.0" text="Responsable" />
         </columns>
       </TableView>
       <Button layoutX="464.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations" textFill="#036810" />
