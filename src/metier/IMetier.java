@@ -7,6 +7,7 @@ public interface IMetier {
     void modifierOrdreTravail(OrdreTravail ot);
     void supprimerOrdreTravail(OrdreTravail ot);
     List<OrdreTravail> getOrdreTravailIntervenant(Intervenant it);
+    List<OrdreTravail> getAllOrdreTravail();
 
     void ajouterResponsable(Responsable responsable);
     void supprimerResponsable(Responsable responsable);
