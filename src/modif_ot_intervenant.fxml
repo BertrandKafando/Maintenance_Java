@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="196.0" layoutY="14.0" text="Mettre à jour un ordre de travail" textFill="#1ee336">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="159.0" layoutY="67.0" text="Service" />
+      <Label layoutX="161.0" layoutY="117.0" text="Description" />
+      <Label layoutX="159.0" layoutY="169.0" text="Priorité" />
+      <Label layoutX="161.0" layoutY="218.0" text="Etat" />
+      <Label layoutX="158.0" layoutY="263.0" text="Entreprise" />
+      <Label layoutX="158.0" layoutY="316.0" text="Responsable" />
+      <TextField layoutX="242.0" layoutY="63.0" />
+      <TextField layoutX="242.0" layoutY="113.0" />
+      <TextField layoutX="242.0" layoutY="165.0" />
+      <ComboBox layoutX="242.0" layoutY="214.0" prefWidth="150.0" />
+      <TextField layoutX="243.0" layoutY="259.0" />
+      <TextField layoutX="242.0" layoutY="312.0" />
+      <Button layoutX="276.0" layoutY="355.0" mnemonicParsing="false" text="Valider" textFill="#2117e8">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
