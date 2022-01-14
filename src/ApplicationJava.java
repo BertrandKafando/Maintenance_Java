@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ApplicationJavaFx extends Application {
+public class ApplicationJava extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         AnchorPane pane= FXMLLoader.load(getClass().getResource("Presentation/responsableMain.fxml"));
