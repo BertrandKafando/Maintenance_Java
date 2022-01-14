@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="129.0" layoutY="32.0" text="Bienvenue sur votre Espace M. " textFill="#141cbc">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="63.0" text="Ici vous verrez les ordres de travail qui vous sont assignés" textFill="#2c0dab">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TableView layoutX="4.0" layoutY="99.0" prefHeight="295.0" prefWidth="451.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Service" />
+          <TableColumn prefWidth="75.0" text="Description" />
+            <TableColumn prefWidth="75.0" text="Priorité" />
+            <TableColumn prefWidth="75.0" text="Etat" />
+            <TableColumn prefWidth="75.0" text="Entreprise" />
+            <TableColumn prefWidth="75.0" text="Responsable" />
+        </columns>
+      </TableView>
+      <Button layoutX="474.0" layoutY="16.0" mnemonicParsing="false" text="Modifiez vos informations" textFill="#0dd721" />
+      <Button layoutX="464.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Modifier Etat Ordre de travail" textFill="#1f0bd7" />
+      <Button layoutX="494.0" layoutY="47.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#0bb535" />
+   </children>
+</AnchorPane>
