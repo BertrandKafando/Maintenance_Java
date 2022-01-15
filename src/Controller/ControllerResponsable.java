@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,7 +42,7 @@ public class ControllerResponsable  implements Initializable {
     @FXML
     private TableColumn<OrdreTravail, Integer>tmps;
 
-
+    public static OrdreTravail ord=null;
 
     MetierImpl metier=new MetierImpl();
     ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
@@ -80,9 +81,29 @@ public class ControllerResponsable  implements Initializable {
         }
 
     }
-    public void modifier(){
-
+    public void modifier(ActionEvent event){
+        ord=tablev.getSelectionModel().getSelectedItem();
+        if(ord==null){
+            Alert alert=new Alert(Alert.AlertType.WARNING); alert.setContentText("selectionner la ligne");
+            alert.show();
+        }else{
+           Stage st=new Stage();
+                try {
+                    AnchorPane pane= FXMLLoader.load(getClass().getResource("src/Presentation/newordre.fxml"));
+                    Scene scn=new Scene(pane,800,600);
+                    st.setScene(scn);
+                    st.setTitle("remplir");
+                    st.initModality(Modality.WINDOW_MODAL);
+                    st.initOwner(
+                            ((Node)event.getSource()).getScene().getWindow() );
+                    st.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
     }
+
+
     public void supprimer(){
 
     }
