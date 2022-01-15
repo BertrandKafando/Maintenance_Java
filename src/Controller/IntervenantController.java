@@ -27,7 +27,7 @@ public class IntervenantController implements Initializable {
     @FXML
     private TableColumn<OrdreTravail,String> otEtat;
     @FXML
-    private TableColumn<OrdreTravail,String> otEntreprse;
+    private TableColumn<OrdreTravail,String> otEntreprise;
     @FXML
     private TableColumn<OrdreTravail,String> otResponsable;
 
@@ -39,11 +39,12 @@ public class IntervenantController implements Initializable {
         otService.setCellValueFactory(new PropertyValueFactory<>("typeService"));
         otDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         otPriorite.setCellValueFactory(new PropertyValueFactory<>("priorite"));
-        otEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        otEntreprse.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
+       // otEtat.setCellValueFactory("En cours");
+        otEntreprise.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         otResponsable.setCellValueFactory(new PropertyValueFactory<>("responsable"));
 
         metier = new MetierImpl();
+        liste.addAll(metier.getAllOrdreTravail());
         tableOts.setItems(liste);
 
     }

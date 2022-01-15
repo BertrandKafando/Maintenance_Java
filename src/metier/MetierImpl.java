@@ -124,7 +124,7 @@ public class MetierImpl implements IMetier{
                 }
 
                 PreparedStatement stm=conn.prepareStatement("select * from intervenant where id_intervenant=?");
-                stm.setInt(1,rs.getInt("id_intervenant "));
+                stm.setInt(1,rs.getInt("id_intervenant"));
                 ResultSet rs3=stm.executeQuery();
                 Intervenant it=null;
                 if(rs3.next()){
