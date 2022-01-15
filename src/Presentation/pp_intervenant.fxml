@@ -28,7 +28,7 @@
             <TableColumn fx:id="otResponsable" prefWidth="127.0" style="-fx-alignment: center" text="Responsable" />
         </columns>
       </TableView>
-      <Button layoutX="626.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations personnelles" textFill="#036810" />
+      <Button layoutX="626.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations personnelles" textFill="#036810" onAction="#modifierInfosPerso"/>
       <Button layoutX="661.0" layoutY="136.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="25.0" prefWidth="153.0" text="Marquer comme Terminé" textFill="#1f0bd7" />
       <Button layoutX="681.0" layoutY="58.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#046b1c" />
 

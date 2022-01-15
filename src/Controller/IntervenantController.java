@@ -2,16 +2,24 @@ package Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import metier.IMetier;
 import metier.MetierImpl;
 import metier.OrdreTravail;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -140,6 +148,17 @@ public class IntervenantController implements Initializable {
             alert.setContentText("Veuillez sélectionner un ordre de travail terminé ");
             alert.show();
         }
+    }
+
+    public void modifierInfosPerso(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/modif_intervenant.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
+
     }
 
 

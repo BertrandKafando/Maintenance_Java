@@ -376,14 +376,14 @@ public class MetierImpl implements IMetier{
     public void updateInter(Intervenant inter) {
         Connection conn=SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=conn.prepareStatement("update intervenant set nom = ?, prenom = ?,email = ?, tel = ?, adresse = ?, password = ? where id_intervenant = ?");
+            PreparedStatement pstm=conn.prepareStatement("update intervenant set nom = ?, prenom = ?,email = ?, telephone = ?, adresse = ?, password = ? where id_intervenant = ?");
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
             pstm.setString(4,inter.getTel());
             pstm.setString(5,inter.getAdresse());
-            pstm.setString(6,inter.getTel());
-            pstm.setString(7,inter.getPassword());
+            pstm.setString(6,inter.getPassword());
+            pstm.setInt(7,inter.getId_intervenant());
             pstm.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
