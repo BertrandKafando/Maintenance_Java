@@ -33,8 +33,7 @@ public class MetierImpl implements IMetier{
     public void modifierOrdreTravail(OrdreTravail ot) {
         Connection conn = SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,set typeService=?,set description=?,set temps=?,set bugjet=?,set priority=?," +
-                    "set etat=?,set id_responsable=?,set id_intervenant=?,set id_entreprise=?  where numOrdreTravail=?");
+            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,typeService=?,description=?,temps=?,budjet=?,priority=?,etat=?,id_responsable=?,id_intervenant=?,id_entreprise=?  where numOrdreTravail=?");
             pstm.setDate(1, new Date(ot.getDate().getTime()));
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
@@ -46,7 +45,8 @@ public class MetierImpl implements IMetier{
             pstm.setInt(9,ot.getIntervenant().getId_intervenant());
             pstm.setInt(10,ot.getEntreprise().getId_entr());
             pstm.setInt(11, ot.getNumOrdreTravail());
-            pstm.execute();
+
+            pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class MetierImpl implements IMetier{
                             rs3.getString("adresse"),rs3.getString("password"));
                 }
 
-                OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
+                OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
                         rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }
@@ -295,7 +295,7 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-    public List<Entreprise> getEntrprises() {
+    public List<Entreprise> getEntreprises() {
         return null;
     }
 

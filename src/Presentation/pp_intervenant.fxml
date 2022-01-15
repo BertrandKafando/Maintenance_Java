@@ -7,30 +7,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntervenantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntervenantController">
    <children>
-      <Label layoutX="129.0" layoutY="32.0" text="Bienvenue sur votre Espace M. " textFill="#141cbc">
+      <Label layoutX="220.0" layoutY="23.0" text="Bienvenue sur votre Espace M. " textFill="#141cbc">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="63.0" text="Ici vous verrez les ordres de travail qui vous sont assignés" textFill="#2c0dab">
+      <Label layoutX="162.0" layoutY="51.0" text="Ici vous verrez les ordres de travail qui vous sont assignés" textFill="#2c0dab">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tableOts" layoutX="4.0" layoutY="99.0" prefHeight="295.0" prefWidth="451.0">
+      <TableView fx:id="tableOts" layoutX="4.0" layoutY="99.0" prefHeight="259.0" prefWidth="625.0">
         <columns>
-          <TableColumn fx:id="otService" prefWidth="75.0" text="Service" />
-          <TableColumn fx:id="otDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="otPriorite" prefWidth="75.0" text="Priorité" />
-            <TableColumn fx:id="otEtat" prefWidth="75.0" text="Etat" />
-            <TableColumn fx:id="otEntreprise" prefWidth="75.0" text="Entreprise" />
-            <TableColumn fx:id="otResponsable" prefWidth="75.0" text="Responsable" />
+          <TableColumn fx:id="otService" prefWidth="117.0" text="Service" style="-fx-alignment: center; " />
+          <TableColumn fx:id="otDescription" prefWidth="125.0" text="Description" style="-fx-alignment: center" />
+            <TableColumn fx:id="otPriorite" prefWidth="126.0" text="Priorité" style="-fx-alignment: center"/>
+            <TableColumn fx:id="otEntreprise" prefWidth="127.0" text="Entreprise" style="-fx-alignment: center"/>
+            <TableColumn fx:id="otResponsable" prefWidth="127.0" text="Responsable" style="-fx-alignment: center" />
         </columns>
       </TableView>
-      <Button layoutX="464.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations" textFill="#036810" />
-      <Button layoutX="464.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Modifier Etat Ordre de travail" textFill="#1f0bd7" onAction="#modifierEtat"/>
-      <Button layoutX="484.0" layoutY="51.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#046b1c" />
+      <Button layoutX="642.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations personnelles" textFill="#036810" />
+      <Button layoutX="678.0" layoutY="138.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="25.0" prefWidth="153.0" text="Marquer comme Terminé" textFill="#1f0bd7" />
+      <Button layoutX="697.0" layoutY="58.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#046b1c" />
+      <Button layoutX="727.0" layoutY="172.0" mnemonicParsing="false" onAction="#actualiser" text="Actualiser" textFill="#345707"  />
+      <Label layoutX="14.0" layoutY="77.0" text="En cours">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="12.0" layoutY="383.0" text="Terminés" textFill="#384001">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TableView layoutX="2.0" layoutY="404.0" prefHeight="184.0" prefWidth="625.0">
+        <columns>
+          <TableColumn prefWidth="127.0" text="Service" />
+          <TableColumn prefWidth="116.0" text="Description" />
+            <TableColumn prefWidth="132.0" text="Priorité" />
+            <TableColumn prefWidth="127.0" text="Entreprise" />
+            <TableColumn prefWidth="122.0" text="Responsable" />
+        </columns>
+      </TableView>
+      <Button layoutX="697.0" layoutY="456.0" mnemonicParsing="false" text="Contacter un responsable" textFill="#6609c9">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

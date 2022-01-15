@@ -74,4 +74,9 @@ public class Intervenant {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return  nom +"  " +prenom ;
+    }
 }

@@ -132,4 +132,22 @@ public class OrdreTravail {
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
     }
+
+    @Override
+    public String toString() {
+        return "OrdreTravail{" +
+                "numOrdreTravail=" + numOrdreTravail +
+                ", date=" + date +
+                ", typeService='" + typeService + '\'' +
+                ", description='" + description + '\'' +
+                ", temps=" + temps +
+                ", budget=" + budget +
+                ", priorite=" + priorite +
+                ", etat=" + etat +
+                ", responsable=" + responsable +
+                ", intervenant=" + intervenant +
+                ", entreprise=" + entreprise +
+                ", materiels=" + materiels +
+                '}';
+    }
 }

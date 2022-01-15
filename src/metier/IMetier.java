@@ -25,7 +25,7 @@ public interface IMetier {
     void ajouterEntreprise(Entreprise entreprise);
     void supprimerEntreprise(Entreprise entreprise);
     void modifierEntreprise(Entreprise entreprise);
-    List<Entreprise>getEntrprises();
+    List<Entreprise>getEntreprises();
 
 
     Intervenant searchInterById(int id);
