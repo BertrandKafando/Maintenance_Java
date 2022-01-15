@@ -39,7 +39,7 @@ public class IntervenantController implements Initializable {
         otService.setCellValueFactory(new PropertyValueFactory<>("typeService"));
         otDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         otPriorite.setCellValueFactory(new PropertyValueFactory<>("priorite"));
-       // otEtat.setCellValueFactory("En cours");
+        otEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         otEntreprise.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         otResponsable.setCellValueFactory(new PropertyValueFactory<>("responsable"));
 
