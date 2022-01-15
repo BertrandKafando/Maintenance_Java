@@ -104,7 +104,19 @@ public class ControllerResponsable  implements Initializable {
     }
 
 
-    public void supprimer(){
+    public void supprimer(ActionEvent event){
+        OrdreTravail select=null;
+        select=tablev.getSelectionModel().getSelectedItem();
+        if(select!=null){
+            metier.supprimerOrdreTravail(select);
+            liste.clear();
+            liste.addAll(metier.getAllOrdreTravail());
+        }else
+        {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choisisser la ligne");
+            alert.show();
+        }
 
     }
     public  void rechercher(){
