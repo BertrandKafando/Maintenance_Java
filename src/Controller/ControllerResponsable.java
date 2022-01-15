@@ -68,7 +68,7 @@ public class ControllerResponsable  implements Initializable {
     public void ajouter(ActionEvent event) {
         Stage st=new Stage();
        try {
-            AnchorPane pane= FXMLLoader.load(getClass().getResource("src/Presentation/newordre.fxml"));
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/newordre.fxml"));
             Scene scn=new Scene(pane,800,600);
             st.setScene(scn);
             st.setTitle("remplir");
@@ -89,7 +89,7 @@ public class ControllerResponsable  implements Initializable {
         }else{
            Stage st=new Stage();
                 try {
-                    AnchorPane pane= FXMLLoader.load(getClass().getResource("src/Presentation/newordre.fxml"));
+                    AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/newordre.fxml"));
                     Scene scn=new Scene(pane,800,600);
                     st.setScene(scn);
                     st.setTitle("remplir");
@@ -125,22 +125,73 @@ public class ControllerResponsable  implements Initializable {
 
 
 
-    public void intervenant(){
+    public void intervenant(ActionEvent event){
+        Stage st=new Stage();
+        try {
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/gestion_intervenant.fxml"));
+            Scene scn=new Scene(pane,1000,600);
+            st.setScene(scn);
+            st.setTitle("Intervenants");
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void exporter(){
+    public void exporter(ActionEvent event){
+        Stage st=new Stage();
+        try {
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("export.fxml"));
+            Scene scn=new Scene(pane,1000,600);
+            st.setScene(scn);
+            st.setTitle("Exporter");
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    public  void compte(){
-
+    public  void compte(ActionEvent event){
+        Stage st=new Stage();
+        try {
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/compte.fxml"));
+            Scene scn=new Scene(pane,800,600);
+            st.setScene(scn);
+            st.setTitle("Administrateur");
+            st.initModality(Modality.WINDOW_MODAL);
+            st.initOwner(
+                    ((Node)event.getSource()).getScene().getWindow() );
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public  void planification(){
+    public  void planification(ActionEvent event){
+        Stage st=new Stage();
+        try {
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("planification.fxml"));
+            Scene scn=new Scene(pane,1000,600);
+            st.setScene(scn);
+            st.setTitle("Diagramme");
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    public  void materiel(){
-
+    public  void materiel(ActionEvent event){
+        Stage st=new Stage();
+        try {
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/materiel.fxml"));
+            Scene scn=new Scene(pane,1000,600);
+            st.setScene(scn);
+            st.setTitle("Ressources");
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
