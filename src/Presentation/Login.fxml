@@ -17,10 +17,10 @@
             <Text layoutX="168.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
             <ComboBox fx:id="comboBoxPassword" layoutX="270.0" layoutY="221.0" prefWidth="150.0" promptText="Profession" />
             <PasswordField fx:id="idPassword" layoutX="279.0" layoutY="170.0" promptText="Saisir votre mot de passe" />
-            <Button layoutX="353.0" layoutY="297.0" mnemonicParsing="false" onAction="#ouvrirEmploye" text="Se connecter" />
+            <Button layoutX="353.0" layoutY="297.0" mnemonicParsing="false"  text="Se connecter" />
             <Text layoutX="160.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profession" />
             <Button layoutX="204.0" layoutY="297.0" mnemonicParsing="false" text="BERTRAND" />
-            <Button layoutX="489.0" layoutY="297.0" mnemonicParsing="false" text="ASSIMI" />
+            <Button layoutX="489.0" layoutY="297.0" mnemonicParsing="false" text="ASSIMI" onAction="#ouvrirEmploye"/>
             <Label layoutX="147.0" layoutY="350.0" text="Ces boutons c'est pour que chacun puisse acceder a ses interfaces sans probleme" />
          </children>
       </AnchorPane>
