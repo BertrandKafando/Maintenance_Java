@@ -44,7 +44,7 @@ public class ControllerResponsable  implements Initializable {
 
     public static OrdreTravail ord=null;
 
-    MetierImpl metier=new MetierImpl();
+    MetierImpl metierip =new MetierImpl();
     ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
 
     @Override
@@ -59,7 +59,7 @@ public class ControllerResponsable  implements Initializable {
         tmps.setCellValueFactory(new PropertyValueFactory<>("temps"));
 
 
-        liste.addAll(metier.getAllOrdreTravail());
+        liste.addAll(metierip.getAllOrdreTravail());
         tablev.setItems(liste);
 
 
@@ -108,9 +108,9 @@ public class ControllerResponsable  implements Initializable {
         OrdreTravail select=null;
         select=tablev.getSelectionModel().getSelectedItem();
         if(select!=null){
-            metier.supprimerOrdreTravail(select);
+            metierip.supprimerOrdreTravail(select);
             liste.clear();
-            liste.addAll(metier.getAllOrdreTravail());
+            liste.addAll(metierip.getAllOrdreTravail());
         }else
         {
             Alert alert=new Alert(Alert.AlertType.WARNING);
