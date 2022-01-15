@@ -48,4 +48,8 @@ public class IntervenantController implements Initializable {
         tableOts.setItems(liste);
 
     }
+
+    public void modifierEtat(){
+
+    }
 }

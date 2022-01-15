@@ -30,7 +30,7 @@
         </columns>
       </TableView>
       <Button layoutX="464.0" layoutY="20.0" mnemonicParsing="false" text="Modifiez vos informations" textFill="#036810" />
-      <Button layoutX="464.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Modifier Etat Ordre de travail" textFill="#1f0bd7" />
+      <Button layoutX="464.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Modifier Etat Ordre de travail" textFill="#1f0bd7" onAction="#modifierEtat"/>
       <Button layoutX="484.0" layoutY="51.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#046b1c" />
    </children>
 </AnchorPane>
