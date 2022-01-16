@@ -143,7 +143,7 @@ public class IntervenantController implements Initializable {
 
     public void modifierInfosPerso(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/modif_intervenant.fxml"));
+        Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/modif_infos_perso_intervenant.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("");
         stage.initModality(Modality.WINDOW_MODAL);

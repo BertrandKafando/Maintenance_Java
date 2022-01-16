@@ -7,7 +7,7 @@ import metier.IMetier;
 import metier.Intervenant;
 import metier.MetierImpl;
 
-public class ModifIntervenantController {
+public class ModifierInfosPersoIntervenantController {
     @FXML
     private TextField fieldNom;
     @FXML

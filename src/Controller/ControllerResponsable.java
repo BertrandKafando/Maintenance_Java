@@ -129,7 +129,7 @@ public class ControllerResponsable  implements Initializable {
         Stage st=new Stage();
         try {
             AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/gestion_intervenant.fxml"));
-            Scene scn=new Scene(pane,1000,600);
+            Scene scn=new Scene(pane,700,500);
             st.setScene(scn);
             st.setTitle("Intervenants");
             st.show();

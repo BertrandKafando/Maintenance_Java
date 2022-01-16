@@ -8,33 +8,33 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="Controller.GestionIntervenantController">
    <children>
       <Label layoutX="204.0" layoutY="27.0" text="Gestions des intervenants" textFill="#1014c6">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TableView layoutX="14.0" layoutY="82.0" prefHeight="296.0" prefWidth="492.0">
+      <TableView fx:id="tableIts" layoutX="14.0" layoutY="82.0" prefHeight="296.0" prefWidth="492.0">
         <columns>
-          <TableColumn prefWidth="88.0" text="Nom" />
-          <TableColumn prefWidth="86.0" text="Prénom" />
-            <TableColumn prefWidth="88.0" text="Téléphone" />
-            <TableColumn prefWidth="79.0" text="Mail" />
-            <TableColumn prefWidth="79.0" text="Adresse" />
-            <TableColumn prefWidth="71.0" text="Mot de passe" />
+          <TableColumn fx:id="itNom" prefWidth="88.0" text="Nom" style="-fx-alignment: center" />
+          <TableColumn fx:id="itPrenom" prefWidth="86.0" text="Prénom" style="-fx-alignment: center" />
+            <TableColumn fx:id="itTel" prefWidth="88.0" text="Téléphone" style="-fx-alignment: center" />
+            <TableColumn fx:id="itMail" prefWidth="79.0" text="Mail" style="-fx-alignment: center" />
+            <TableColumn fx:id="itAdresse" prefWidth="79.0" text="Adresse" style="-fx-alignment: center" />
+            <TableColumn fx:id="itMdp" prefWidth="71.0" text="Mot de passe" style="-fx-alignment: center" />
         </columns>
       </TableView>
-      <Button layoutX="517.0" layoutY="127.0" mnemonicParsing="false" text="Ajouter un intervenant" textFill="#1a119a">
+      <Button layoutX="517.0" layoutY="127.0" mnemonicParsing="false" text="Ajouter un intervenant" textFill="#1a119a" onAction="#ajouter">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="519.0" layoutY="188.0" mnemonicParsing="false" text="Modifier l'intervenant" textFill="#5409d7">
+      <Button layoutX="519.0" layoutY="188.0" mnemonicParsing="false" text="Modifier l'intervenant" textFill="#5409d7" onAction="#modifier">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="515.0" layoutY="245.0" mnemonicParsing="false" text="Supprimer l'intervenant" textFill="#e81b1b" />
+      <Button layoutX="515.0" layoutY="245.0" mnemonicParsing="false" text="Supprimer l'intervenant" textFill="#e81b1b" onAction="#supprimer" />
    </children>
 </AnchorPane>

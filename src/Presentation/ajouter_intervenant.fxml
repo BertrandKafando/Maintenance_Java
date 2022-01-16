@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierIntervenantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterIntervenantController">
    <children>
-      <Label layoutX="154.0" layoutY="58.0" text="Modifiez les informations d'un intervenant" textFill="#3f1cbc">
+      <Label layoutX="190.0" layoutY="55.0" text="Ajouter un nouvel intervenant" textFill="#3f1cbc">
          <font>
             <Font size="16.0" />
          </font>
@@ -25,7 +25,7 @@
       <TextField fx:id="fieldTelephone" layoutX="419.0" layoutY="122.0" />
       <TextField fx:id="fieldEmail" layoutX="419.0" layoutY="196.0" />
       <TextField fx:id="fieldMdp" layoutX="419.0" layoutY="274.0" />
-      <Button layoutX="263.0" layoutY="329.0" mnemonicParsing="false" text="Valider" textFill="#0d85da">
+      <Button layoutX="263.0" layoutY="329.0" mnemonicParsing="false" text="Ajouter" textFill="#0d85da">
          <font>
             <Font size="16.0" />
          </font>
