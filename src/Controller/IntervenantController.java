@@ -90,6 +90,24 @@ public class IntervenantController implements Initializable {
 
     }
 
+    public void actualiser(){
+        List<OrdreTravail> ots = metier.getAllOrdreTravail(); List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
+        for(OrdreTravail otr : ots){
+            if(otr.isEtat()) {
+                ots2.add(otr);
+            }
+            else{
+                ots1.add(otr);
+            }
+        }
+
+        liste2.clear();
+        liste2.addAll(ots2);
+
+        liste.clear();
+        liste.addAll(ots1);
+    }
+
     public void modifierEtat(){
         int indice=tableOts.getSelectionModel().getSelectedIndex();
         OrdreTravail ot = tableOts.getSelectionModel().getSelectedItem();
@@ -97,28 +115,16 @@ public class IntervenantController implements Initializable {
         OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(),ot.getDate(),ot.getTypeService(),ot.getDescription(),ot.getTemps(),ot.getBudget(),ot.getPriorite(),true,ot.getResponsable(),ot.getIntervenant(),ot.getEntreprise());
         //metier = new MetierImpl();
         metier.modifierOrdreTravail(ot1);
+        actualiser();
 
-        List<OrdreTravail> ots = metier.getAllOrdreTravail(); List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
-            for(OrdreTravail otr : ots){
-                if(otr.isEtat()) {
-                    ots2.add(otr);
-                }
-                else{
-                    ots1.add(otr);
-                }
-            }
-
-            liste2.clear();
-            liste2.addAll(ots2);
-
-            liste.clear();
-            liste.addAll(ots1);
         }else{
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Veuillez sélectionner un ordre de travail non terminé  ");
             alert.show();
         }
     }
+
+
 
     public  void modifierEtat2(){
         int indice=tableOts2.getSelectionModel().getSelectedIndex();
@@ -127,22 +133,7 @@ public class IntervenantController implements Initializable {
             OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(),ot.getDate(),ot.getTypeService(),ot.getDescription(),ot.getTemps(),ot.getBudget(),ot.getPriorite(),false,ot.getResponsable(),ot.getIntervenant(),ot.getEntreprise());
             //metier = new MetierImpl();
             metier.modifierOrdreTravail(ot1);
-
-            List<OrdreTravail> ots = metier.getAllOrdreTravail(); List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
-            for(OrdreTravail otr : ots){
-                if(otr.isEtat()) {
-                    ots2.add(otr);
-                }
-                else{
-                    ots1.add(otr);
-                }
-            }
-
-            liste2.clear();
-            liste2.addAll(ots2);
-
-            liste.clear();
-            liste.addAll(ots1);
+            actualiser();
         }else{
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Veuillez sélectionner un ordre de travail terminé ");
