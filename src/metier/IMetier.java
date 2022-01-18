@@ -1,11 +1,17 @@
 package metier;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IMetier {
+    static List<OrdreTravail> ordresTravail = new ArrayList<>();
     void ajouterOrdreTravail(OrdreTravail ot);
     void modifierOrdreTravail(OrdreTravail ot);
     void supprimerOrdreTravail(OrdreTravail ot);
+    void setPriorityOrdre(Date date);
+    List<OrdreTravail> getAllOrdreTravailSort();
+
     List<OrdreTravail> getOrdreTravailIntervenant(Intervenant it);
 
     void ajouterResponsable(Responsable responsable);
@@ -33,5 +39,7 @@ public interface IMetier {
     void deleteInter(int id);
     void updateInter(Intervenant inter);
     List<Intervenant> getAllInter();
+
+    int login(String interOrResp, String email, String password);
 
 }

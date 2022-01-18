@@ -4,17 +4,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginController implements Initializable {
-    @FXML private TextField textMail;
-    @FXML private TextField textPassword;
-    @FXML  private ComboBox<String > comboBoxPassword;
+    metier.MetierImpl metier= new  metier.MetierImpl();
+    @FXML private TextField mail;
+    @FXML private TextField password;  // = new JPasswordField(20);
+    @FXML  private ComboBox<String > comboBox;
     ObservableList<String> profession =
             FXCollections.observableArrayList(
                     "responsable",
@@ -22,7 +27,35 @@ public class LoginController implements Initializable {
             );
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboBoxPassword.setItems(profession);
+        comboBox.setItems(profession);
+
+    }
+    public void login(){
+        //EmailValidator validator = EmailValidator.getInstance();
+        //Regular Expression
+        String regex = "^(.+)@(.+)$";
+        //Compile regular expression to get the pattern
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(mail.getText());
+        if( metier.login(comboBox.getValue(), mail.getText(), password.getText())==0 || !matcher.matches() )
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid email");
+            //alert.setHeaderText("Results:");
+            alert.setContentText("email invalid");
+            alert.showAndWait();
+        }
+        else if(metier.login(comboBox.getValue(), mail.getText(), password.getText())==-1)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mot de passe incorrect");
+            //alert.setHeaderText("Results:");
+            alert.setContentText("Mot de passe incorrect");
+            alert.showAndWait();
+        }
+        else{
+            //successful connection go to the next stage
+        }
     }
 
 }

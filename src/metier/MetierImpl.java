@@ -1,12 +1,59 @@
 package metier;
 
+
 import DAO.SingletonConnexionDB;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+
 public class MetierImpl implements IMetier{
+
+
+    public List<OrdreTravail> getAllOrdreTravailSort(){
+
+        Connection conn = new SingletonConnexionDB().getConnection();
+        OrdreTravail ordreTravail=null;
+
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from ordretravail");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                //ordresTravail = new OrdreTravail(rs.getInt(1) ,rs.getDate(2) ,rs.getString(3) , rs.getString(4) ,rs.getInt(5),rs.getDouble(6),rs.getInt(7),rs.getBoolean(8), rs.getInt(9) , rs.getInt(10), rs.getInt(11));
+                ordreTravail = new OrdreTravail(rs.getInt(1), rs.getInt(7));
+                ordresTravail.add(ordreTravail);
+            }
+            Collections.sort(ordresTravail, new OrdrePriorityComparator());
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return ordresTravail;
+    }
+    public void setPriorityOrdre(Date date){
+        Connection conn= SingletonConnexionDB.getConnection();
+        OrdreTravail ot;
+        try {
+            PreparedStatement pstm=conn.prepareStatement("insert into ORDRETRAVAIL(DATE,TYPESERVICE,DESCRIPTION,TEMPS,BUDJET,PRIORITY,ETAT,ID_RESPONSABLE,ID_INTERVENANT,ID_ENTREPRISE) " +
+                    "values (?,?,?,?,?,?,?,?,?,?)");
+            pstm.setDate(1,new Date(ot.getDate().getTime()));
+            pstm.setString(2,ot.getTypeService());
+            pstm.setString(3,ot.getDescription());
+            pstm.setInt(4,ot.getTemps());
+            pstm.setDouble(5,ot.getBudget());
+            pstm.setInt(6,ot.getPriorite());
+            pstm.setBoolean(7, ot.isEtat());
+            pstm.setInt(8,ot.getResponsable().getId_respon());
+            pstm.setInt(9,ot.getIntervenant().getId_intervenant());
+            pstm.setInt(10,ot.getEntreprise().getId_entr());
+            pstm.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
     @Override
     public void ajouterOrdreTravail(OrdreTravail ot) {
         Connection conn= SingletonConnexionDB.getConnection();
@@ -365,4 +412,35 @@ public class MetierImpl implements IMetier{
         }
         return intervenants;
     }
-}
+
+    public int login(String interOrResp, String email, String password){
+        Connection conn = SingletonConnexionDB.getConnection();
+           int test=0;
+        try {
+            if (interOrResp.equals("intervenant")) {
+                PreparedStatement pstm = conn.prepareStatement("select * from intervenant where email = ?");
+                pstm.setString(1, email);
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()) {
+                    if (rs.getString(7).equals(password))
+                        test = 1;
+                    else test = -1;
+                } else if (interOrResp.equals("responsable")) {
+                    PreparedStatement pstm1 = conn.prepareStatement("select * from intervenant where email = ?");
+                    pstm1.setString(1, email);
+                    ResultSet res = pstm1.executeQuery();
+                    if (rs.next()) {
+                        if (rs.getString(7).equals(password))
+                            test = 1;
+                        else test = -1;
+                    }
+
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  test;
+    }
+    }
+
