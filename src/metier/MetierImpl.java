@@ -227,9 +227,10 @@ public class MetierImpl implements IMetier{
     public void modifierlesinformations(Responsable responsable) {
         Connection connection=SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement stm=connection.prepareStatement("update responsable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_");
+            PreparedStatement stm=connection.prepareStatement("update responsable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_respon=?");
             stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
             stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
+            stm.setInt(7,responsable.getId_respon());
             stm.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

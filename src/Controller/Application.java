@@ -4,6 +4,7 @@ import metier.EnvoiMail;
 import metier.MetierImpl;
 import metier.Responsable;
 
+
 import javax.mail.MessagingException;
 
 public class Application   {

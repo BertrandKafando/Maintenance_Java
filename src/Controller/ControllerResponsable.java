@@ -15,10 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import metier.Entreprise;
-import metier.Intervenant;
-import metier.MetierImpl;
-import metier.OrdreTravail;
+import metier.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,6 +43,7 @@ public class ControllerResponsable  implements Initializable {
 
     MetierImpl metierip =new MetierImpl();
     ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
+    public  static Responsable responsableS=null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
