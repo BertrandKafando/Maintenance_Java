@@ -2,6 +2,8 @@ package Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +28,8 @@ public class CompteRenponsable implements Initializable {
     private TextField cadd;
 
     @FXML
+    private PasswordField anpss;
+    @FXML
     private TextField noump;
     @FXML
     private TextField anmp;
@@ -48,6 +52,25 @@ MetierImpl imp =new MetierImpl();
     }
 
     public  void changer(){
+        if(anpss.getText().equals("")){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("entrez votre mot de passe");
+            alert.show();
+        } else  if(anpss.getText().equals(imp.getResponsable().getPassword())){
+             if(noump.getText().equals("")) {
+                 Alert alert=new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("entrez un nouveau mot de passe");
+                 alert.show();
+             }else{
+                 Responsable responsable=imp.getResponsable();
+                 responsable.setPassword(noump.getText());
+                 imp.modifierlesinformations(responsable);
+                 Alert alert=new Alert(Alert.AlertType.INFORMATION);
+                 alert.setContentText("nouveau mot de passe :"+noump.getText());
+                 alert.show();
+             }
+        }
+
 
     }
 
