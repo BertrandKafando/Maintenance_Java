@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CompteRenponsable implements Initializable {
+public class ControllerCompteResponsable implements Initializable {
 
     @FXML
     private TextField cnm;
