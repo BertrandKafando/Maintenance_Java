@@ -12,7 +12,7 @@ import java.util.List;
 public class MetierImpl implements IMetier{
 
 
-    public List<OrdreTravail> getAllOrdreTravailSort(){
+    /* public List<OrdreTravail> getAllOrdreTravailSort(){
 
         Connection conn = new SingletonConnexionDB().getConnection();
         OrdreTravail ordreTravail=null;
@@ -31,10 +31,10 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
         return ordresTravail;
-    }
+    }   */
     public void setPriorityOrdre(Date date){
         Connection conn= SingletonConnexionDB.getConnection();
-        OrdreTravail ot;
+        OrdreTravail ot=null;
         try {
             PreparedStatement pstm=conn.prepareStatement("insert into ORDRETRAVAIL(DATE,TYPESERVICE,DESCRIPTION,TEMPS,BUDJET,PRIORITY,ETAT,ID_RESPONSABLE,ID_INTERVENANT,ID_ENTREPRISE) " +
                     "values (?,?,?,?,?,?,?,?,?,?)");
@@ -54,6 +54,12 @@ public class MetierImpl implements IMetier{
         }
 
     }
+
+    @Override
+    public List<OrdreTravail> getAllOrdreTravailSort() {
+        return null;
+    }
+
     @Override
     public void ajouterOrdreTravail(OrdreTravail ot) {
         Connection conn= SingletonConnexionDB.getConnection();
