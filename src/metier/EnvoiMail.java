@@ -40,6 +40,7 @@ public class EnvoiMail {
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepteur));
         message.setSubject("Nouvel ordre de travail");
         message.setText("Bonjour,\n Un nouvel ordre de travail vous a été assigné.\n\n Veuillez vous connectez pour voir les détails.");
+        return message;
         } catch (Exception ex) {
             Logger.getLogger(EnvoiMail.class.getName()).log(Level.SEVERE,null,ex);
         }

@@ -1,4 +1,4 @@
-package Controller;
+package metier;
 
 import metier.EnvoiMail;
 import metier.MetierImpl;
@@ -8,7 +8,7 @@ import metier.Responsable;
 import javax.mail.MessagingException;
 
 public class Application   {
-    public  static  void main(String []args){
+    public  static  void main(String []args) throws Exception {
 
         //Responsable rep=new Responsable("kaf","bertrand","email","telephone", "adresse", "password");
 
@@ -16,11 +16,10 @@ public class Application   {
 
         //imp.supprimerResponsable(imp.getResponsable());
         //System.out.println(imp.getResponsable());
-        try {
-            EnvoiMail.sendMail("maintenance.app00@gmail.com");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+
+        //EnvoiMail.sendMail("maintenance.app00@gmail.com");
+        EnvoiMail.sendMail("bertrandkafando07@gmail.com ");
+
     }
 
 }

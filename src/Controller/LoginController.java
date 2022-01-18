@@ -59,6 +59,7 @@ public class LoginController implements Initializable {
         }
         else if(metier.login(comboBox.getValue(), mail.getText(), password.getText())==-1)
         {
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Mot de passe incorrect");
             //alert.setHeaderText("Results:");

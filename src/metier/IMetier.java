@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IMetier {
+
     static List<OrdreTravail> ordresTravail = new ArrayList<>();
     void ajouterOrdreTravail(OrdreTravail ot);
     void modifierOrdreTravail(OrdreTravail ot);
