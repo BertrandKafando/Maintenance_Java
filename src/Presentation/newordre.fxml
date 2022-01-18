@@ -48,15 +48,15 @@
          </rowConstraints>
          <children>
             <Label text="Intervenant" />
-<<<<<<< HEAD
+
             <Label text="Entreprise" GridPane.rowIndex="1" />
             <Label text="priotité" GridPane.rowIndex="2" />
             <Label text="Label" GridPane.rowIndex="3" />
             <ComboBox fx:id="intervenant" prefWidth="150.0" GridPane.columnIndex="1" />
-=======
+
             <Label text="priotité" GridPane.rowIndex="1" />
             <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
->>>>>>> 17a92ba1329dc58e19893c4ad69408a4b4b7b5a7
+
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
