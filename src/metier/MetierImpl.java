@@ -476,11 +476,11 @@ public class MetierImpl implements IMetier{
                         test = 1;
                     else test = -1;
                 } else if (interOrResp.equals("responsable")) {
-                    PreparedStatement pstm1 = conn.prepareStatement("select * from intervenant where email = ?");
+                    PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
                     pstm1.setString(1, email);
                     ResultSet res = pstm1.executeQuery();
                     if (rs.next()) {
-                        if (rs.getString(7).equals(password))
+                        if (rs.getString("password").equals(password))
                             test = 1;
                         else test = -1;
                     }

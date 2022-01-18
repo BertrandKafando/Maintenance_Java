@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
         comboBox.setItems(profession);
 
     }
-    public void login(){
+    public void login() throws IOException {
         //EmailValidator validator = EmailValidator.getInstance();
         //Regular Expression
         String regex = "^(.+)@(.+)$";
@@ -66,7 +66,29 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         }
         else{
-            //successful connection go to the next stage
+             if(comboBox.getValue()=="intervenant")
+             {
+
+                 Stage stage = new Stage();
+                 Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/pp_intervenant.fxml"));
+                 stage.setScene(new Scene(root));
+                 stage.setTitle("");
+                 stage.initModality(Modality.WINDOW_MODAL);
+                // stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+                 stage.show();
+
+             }
+             else{
+
+                 Stage stage = new Stage();
+                 Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/responsableMain.fxml"));
+                 stage.setScene(new Scene(root));
+                 stage.setTitle("");
+                 stage.initModality(Modality.WINDOW_MODAL);
+                 // stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+                 stage.show();
+
+             }
         }
     }
 
