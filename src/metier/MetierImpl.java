@@ -86,8 +86,7 @@ public class MetierImpl implements IMetier{
     public void modifierOrdreTravail(OrdreTravail ot) {
         Connection conn = SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,set typeService=?,set description=?,set temps=?,set bugjet=?,set priority=?," +
-                    "set etat=?,set id_responsable=?,set id_intervenant=?,set id_entreprise=?  where numOrdreTravail=?");
+            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,typeService=?,description=?,temps=?,budjet=?,priority=?,etat=?,id_responsable=?,id_intervenant=?,id_entreprise=?  where numOrdreTravail=?");
             pstm.setDate(1, new Date(ot.getDate().getTime()));
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
@@ -99,7 +98,8 @@ public class MetierImpl implements IMetier{
             pstm.setInt(9,ot.getIntervenant().getId_intervenant());
             pstm.setInt(10,ot.getEntreprise().getId_entr());
             pstm.setInt(11, ot.getNumOrdreTravail());
-            pstm.execute();
+
+            pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,6 +142,50 @@ public class MetierImpl implements IMetier{
                     e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
                 }
                 OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
+                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
+                ordreTravails.add(ot);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  ordreTravails;
+    }
+
+    @Override
+    public List<OrdreTravail> getAllOrdreTravail() {
+        Connection conn=SingletonConnexionDB.getConnection();
+        List<OrdreTravail> ordreTravails=new ArrayList<>();
+        try {
+            PreparedStatement pstm=conn.prepareStatement("select * from ORDRETRAVAIL ");
+            ResultSet rs= pstm.executeQuery();
+            while (rs.next()){
+                PreparedStatement pstm1=conn.prepareStatement("select * from RESPONSABLE where ID_RESPON=?");
+                pstm1.setInt(1,rs.getInt("ID_RESPONSABLE"));
+                ResultSet rs1= pstm1.executeQuery();
+                Responsable r=null;
+                if(rs1.next()){
+                    r=new Responsable(rs1.getInt("ID_RESPON"),rs1.getString("NOM"),rs1.getString("PRENOM"),rs1.getString("EMAIL"),
+                            rs1.getString("TELEPHONE"), rs1.getString("ADRESSE"),rs1.getString("PASSWORD"));
+                }
+
+                PreparedStatement pstm2=conn.prepareStatement("select * from ENTREPRISE where ID=?");
+                pstm2.setInt(1,rs.getInt("ID_ENTREPRISE"));
+                ResultSet rs2= pstm2.executeQuery();
+                Entreprise e=null;
+                if(rs2.next()){
+                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
+                }
+
+                PreparedStatement stm=conn.prepareStatement("select * from intervenant where id_intervenant=?");
+                stm.setInt(1,rs.getInt("id_intervenant"));
+                ResultSet rs3=stm.executeQuery();
+                Intervenant it=null;
+                if(rs3.next()){
+                    it=new Intervenant(rs3.getInt("id_intervenant"),rs3.getString("nom"),rs3.getString("prenom"),rs3.getString("email"),rs3.getString("telephone"),
+                            rs3.getString("adresse"),rs3.getString("password"));
+                }
+
+                OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
                         rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }
@@ -304,7 +348,7 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-    public List<Entreprise> getEntrprises() {
+    public List<Entreprise> getEntreprises() {
         return null;
     }
 
@@ -385,14 +429,14 @@ public class MetierImpl implements IMetier{
     public void updateInter(Intervenant inter) {
         Connection conn=SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=conn.prepareStatement("update intervenant set nom = ?, prenom = ?,email = ?, tel = ?, adresse = ?, password = ? where id_intervenant = ?");
+            PreparedStatement pstm=conn.prepareStatement("update intervenant set nom = ?, prenom = ?,email = ?, telephone = ?, adresse = ?, password = ? where id_intervenant = ?");
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
             pstm.setString(4,inter.getTel());
             pstm.setString(5,inter.getAdresse());
-            pstm.setString(6,inter.getTel());
-            pstm.setString(7,inter.getPassword());
+            pstm.setString(6,inter.getPassword());
+            pstm.setInt(7,inter.getId_intervenant());
             pstm.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();

@@ -2,13 +2,27 @@ package Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.control.Alert;
+=======
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+>>>>>>> 17a92ba1329dc58e19893c4ad69408a4b4b7b5a7
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+<<<<<<< HEAD
 import javax.swing.*;
+=======
+import java.io.IOException;
+>>>>>>> 17a92ba1329dc58e19893c4ad69408a4b4b7b5a7
 import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +70,17 @@ public class LoginController implements Initializable {
         else{
             //successful connection go to the next stage
         }
+    }
+
+    public void ouvrirEmploye(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/pp_intervenant.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
+
     }
 
 }

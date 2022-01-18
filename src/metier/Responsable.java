@@ -91,14 +91,6 @@ public class Responsable {
 
     @Override
     public String toString() {
-        return "Responsable{" +
-                "id_respon=" + id_respon +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return  nom + "  " + prenom;
     }
 }

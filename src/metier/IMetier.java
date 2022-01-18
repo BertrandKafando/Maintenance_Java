@@ -13,6 +13,7 @@ public interface IMetier {
     List<OrdreTravail> getAllOrdreTravailSort();
 
     List<OrdreTravail> getOrdreTravailIntervenant(Intervenant it);
+    List<OrdreTravail> getAllOrdreTravail();
 
     void ajouterResponsable(Responsable responsable);
     void supprimerResponsable(Responsable responsable);
@@ -30,7 +31,7 @@ public interface IMetier {
     void ajouterEntreprise(Entreprise entreprise);
     void supprimerEntreprise(Entreprise entreprise);
     void modifierEntreprise(Entreprise entreprise);
-    List<Entreprise>getEntrprises();
+    List<Entreprise>getEntreprises();
 
 
     Intervenant searchInterById(int id);
