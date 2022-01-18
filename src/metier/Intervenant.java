@@ -77,10 +77,7 @@ public class Intervenant {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         return nom + ' ' + prenom;
-=======
-        return  nom +"  " +prenom ;
->>>>>>> 17a92ba1329dc58e19893c4ad69408a4b4b7b5a7
+
     }
 }
