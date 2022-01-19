@@ -5,7 +5,7 @@ import metier.MetierImpl;
 import metier.Responsable;
 
 
-import javax.mail.MessagingException;
+//import javax.mail.MessagingException;
 
 public class Application   {
     public  static  void main(String []args) throws Exception {
@@ -18,7 +18,7 @@ public class Application   {
         //System.out.println(imp.getResponsable());
 
         //EnvoiMail.sendMail("maintenance.app00@gmail.com");
-        EnvoiMail.sendMail("bertrandkafando07@gmail.com ");
+        //EnvoiMail.sendMail("bertrandkafando07@gmail.com ");
 
     }
 

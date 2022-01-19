@@ -1,7 +1,7 @@
 package metier;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OrdreTravail {
@@ -31,7 +31,6 @@ public class OrdreTravail {
         this.intervenant = intervenant;
         this.entreprise = entreprise;
     }
-
     public OrdreTravail(Date date, String typeService, String description, int temps, double budget, int priorite, boolean etat, Responsable responsable, Intervenant intervenant, Entreprise entreprise) {
         this.date = date;
         this.typeService = typeService;
@@ -49,6 +48,8 @@ public class OrdreTravail {
         this.numOrdreTravail = numOrdreTravail;
         this.priorite = priorite;
     }
+
+
 
     public int getNumOrdreTravail() {
         return numOrdreTravail;
@@ -77,6 +78,8 @@ public class OrdreTravail {
     public String getDescription() {
         return description;
     }
+
+
 
     public void setDescription(String description) {
         this.description = description;

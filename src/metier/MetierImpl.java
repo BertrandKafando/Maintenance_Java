@@ -38,8 +38,7 @@ public class MetierImpl implements IMetier{
         Connection conn= SingletonConnexionDB.getConnection();
         OrdreTravail ot=null;
         try {
-            PreparedStatement pstm=conn.prepareStatement("insert into ORDRETRAVAIL(DATE,TYPESERVICE,DESCRIPTION,TEMPS,BUDJET,PRIORITY,ETAT,ID_RESPONSABLE,ID_INTERVENANT,ID_ENTREPRISE) " +
-                    "values (?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm=conn.prepareStatement("insert into ORDRETRAVAIL(date,typeService,description,temps,budjet,priority,etat,id_responsable,id_intervenant,id_entreprise values (?,?,?,?,?,?,?,?,?,?)");
             pstm.setDate(1,new Date(ot.getDate().getTime()));
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
@@ -66,9 +65,8 @@ public class MetierImpl implements IMetier{
     public void ajouterOrdreTravail(OrdreTravail ot) {
         Connection conn= SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=conn.prepareStatement("insert into ORDRETRAVAIL(DATE,TYPESERVICE,DESCRIPTION,TEMPS,BUDJET,PRIORITY,ETAT,ID_RESPONSABLE,ID_INTERVENANT,ID_ENTREPRISE) " +
-                    "values (?,?,?,?,?,?,?,?,?,?)");
-            pstm.setDate(1,new Date(ot.getDate().getTime()));
+            PreparedStatement pstm=conn.prepareStatement("insert into ordreTravail(date,typeService,description,temps,budjet,priority,etat,id_responsable,id_intervenant,id_entreprise) values (?,?,?,?,?,?,?,?,?,?)");
+            pstm.setDate(1,ot.getDate());
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
             pstm.setInt(4,ot.getTemps());
@@ -316,7 +314,8 @@ public class MetierImpl implements IMetier{
         Connection connection=SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=connection.prepareStatement("insert into entreprise(nom,telephone,email) values (?,?,?)");
-            pstm.setString(1,entreprise.getNom()); pstm.setString(2,entreprise.getTelephone()); pstm.setString(3,entreprise.getEmail());
+            pstm.setString(1,entreprise.getNom());
+            pstm.setString(2,entreprise.getTelephone()); pstm.setString(3,entreprise.getEmail());
             pstm.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -350,9 +349,39 @@ public class MetierImpl implements IMetier{
         }
     }
 
+    public Entreprise nameEntrepriseToObject(String name){
+        Connection conn = SingletonConnexionDB.getConnection();
+        Entreprise entreprise = null;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from entreprise where nom = ?");
+            pstm.setString(1, name);
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next())
+                entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return entreprise;
+    }
+
     @Override
-    public List<Entreprise> getEntreprises() {
-        return null;
+    public List<Entreprise> getAllEntreprise() {
+
+        Connection conn = SingletonConnexionDB.getConnection();
+        List<Entreprise> entrprises = new ArrayList<>();
+
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from entreprise");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                Entreprise entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+
+                entrprises.add(entreprise);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return entrprises;
     }
 
     @Override
@@ -444,6 +473,20 @@ public class MetierImpl implements IMetier{
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public Intervenant nameInterToObject(String name){
+        Connection conn = SingletonConnexionDB.getConnection();
+        Intervenant inter = null;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from intervenant where nom = ?");
+            pstm.setString(1, name);
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next())
+                inter = new Intervenant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return inter;
     }
 
     @Override

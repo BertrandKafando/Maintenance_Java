@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddOrdre">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddOrdre">
    <children>
       <GridPane layoutX="141.0" layoutY="162.0" prefHeight="321.0" prefWidth="373.0">
         <columnConstraints>
@@ -29,12 +29,12 @@
             <Label text="Description" GridPane.rowIndex="1" />
             <Label text="Date" GridPane.rowIndex="2" />
             <Label text="Temps" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textBudget" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textDesc" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textTemps" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label layoutX="10.0" layoutY="227.0" text="Budget" GridPane.rowIndex="4" />
-            <DatePicker prefHeight="24.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="service" prefHeight="21.0" prefWidth="196.0" GridPane.columnIndex="1" />
+            <DatePicker fx:id="date" prefHeight="24.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="service" prefHeight="21.0" prefWidth="196.0" promptText="choisir le service" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <GridPane layoutX="682.0" layoutY="99.0" prefHeight="221.0" prefWidth="373.0">
@@ -53,14 +53,12 @@
 
             <Label text="Entreprise" GridPane.rowIndex="1" />
             <Label text="priotité" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.rowIndex="3" />
-            <ComboBox fx:id="intervenant" prefWidth="150.0" GridPane.columnIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="intervenant" prefHeight="24.0" prefWidth="199.0" promptText="choisir un intervenant" GridPane.columnIndex="1" />
+            <TextField fx:id="textPriority" layoutX="197.0" layoutY="92.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="entreprise" prefHeight="24.0" prefWidth="203.0" promptText="choisir une entreprise" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="545.0" layoutY="648.0" mnemonicParsing="false" text="Enregistrer" />
+      <Button layoutX="545.0" layoutY="648.0" mnemonicParsing="false" onAction="#addOrdreTravail" text="Enregistrer" />
       <Label layoutX="539.0" layoutY="52.0" text="Ordre de travail" />
       <GridPane layoutX="903.0" layoutY="472.0" prefHeight="163.0" prefWidth="200.0">
         <columnConstraints>
@@ -73,17 +71,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="eseNom" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1" />
+            <TextField fx:id="eseTel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="eseEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Nom" />
             <Label text="Telephone" GridPane.rowIndex="1" />
             <Label text="Email" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Label layoutX="936.0" layoutY="348.0" text="Entreprise" />
-      <ComboBox layoutX="869.0" layoutY="397.0" prefWidth="150.0" />
-      <Label layoutX="752.0" layoutY="376.0" text="Chosir" />
       <Label layoutX="765.0" layoutY="451.0" text="Nouvelle Entrprise" />
+      <Button layoutX="1035.0" layoutY="655.0" mnemonicParsing="false" onAction="#addEse" text="ajouter l'entreprise" />
    </children>
 </AnchorPane>

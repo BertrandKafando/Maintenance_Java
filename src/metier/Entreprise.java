@@ -13,6 +13,12 @@ public class Entreprise {
         this.email = email;
     }
 
+    public Entreprise(String nom, String telephone, String email) {
+        this.nom = nom;
+        this.telephone = telephone;
+        this.email = email;
+    }
+
     public int getId_entr() {
         return id_entr;
     }

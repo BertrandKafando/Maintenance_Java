@@ -19,6 +19,7 @@ public interface IMetier {
     void ajouterResponsable(Responsable responsable);
     void supprimerResponsable(Responsable responsable);
     void modifierlesinformations(Responsable responsable);
+    //Responsable IdRespToNod(int id);
     Responsable getResponsable();
     List<Responsable>getResponsables();
 
@@ -32,7 +33,8 @@ public interface IMetier {
     void ajouterEntreprise(Entreprise entreprise);
     void supprimerEntreprise(Entreprise entreprise);
     void modifierEntreprise(Entreprise entreprise);
-    List<Entreprise>getEntreprises();
+    Entreprise nameEntrepriseToObject(String name);
+    List<Entreprise> getAllEntreprise();
 
 
     Intervenant searchInterById(int id);
@@ -40,6 +42,7 @@ public interface IMetier {
     void AddInter(Intervenant inter);
     void deleteInter(int id);
     void updateInter(Intervenant inter);
+    Intervenant nameInterToObject(String name);
     List<Intervenant> getAllInter();
 
     int login(String interOrResp, String email, String password);
