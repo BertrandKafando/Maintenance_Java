@@ -58,9 +58,9 @@
             <ComboBox fx:id="entreprise" prefHeight="24.0" prefWidth="203.0" promptText="choisir une entreprise" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="545.0" layoutY="648.0" mnemonicParsing="false" onAction="#addOrdreTravail" text="Enregistrer" />
+      <Button layoutX="447.0" layoutY="679.0" mnemonicParsing="false" onAction="#addOrdreTravail" text="Enregistrer" />
       <Label layoutX="539.0" layoutY="52.0" text="Ordre de travail" />
-      <GridPane layoutX="903.0" layoutY="472.0" prefHeight="163.0" prefWidth="200.0">
+      <GridPane layoutX="848.0" layoutY="483.0" prefHeight="163.0" prefWidth="200.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -79,7 +79,7 @@
             <Label text="Email" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Label layoutX="765.0" layoutY="451.0" text="Nouvelle Entrprise" />
-      <Button layoutX="1035.0" layoutY="655.0" mnemonicParsing="false" onAction="#addEse" text="ajouter l'entreprise" />
+      <Label layoutX="738.0" layoutY="442.0" text="Nouvelle Entrprise" />
+      <Button layoutX="896.0" layoutY="679.0" mnemonicParsing="false" onAction="#addEse" text="ajouter l'entreprise" />
    </children>
 </AnchorPane>
