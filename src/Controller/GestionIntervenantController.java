@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,6 +45,8 @@ public class GestionIntervenantController implements Initializable {
     ObservableList<Intervenant> listeIts= FXCollections.observableArrayList();
     private IMetier metier;
 
+    static Intervenant staticIt;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         itNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -70,17 +73,36 @@ public class GestionIntervenantController implements Initializable {
     }
 
     public void modifier(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(GestionIntervenantController.class.getResource("../presentation/modif_intervenant.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("");
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
-        stage.show();
+        staticIt = tableIts.getSelectionModel().getSelectedItem();
+        if(staticIt==null) {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Veuillez sélectionner un intervenant");
+            alert.show();
+        }
+        else{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(GestionIntervenantController.class.getResource("../presentation/modif_intervenant.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+            stage.show();
+        }
     }
 
     public void supprimer(){
-
+        Intervenant it=null;
+        it=tableIts.getSelectionModel().getSelectedItem();
+        if(it!=null){
+            metier.deleteInter(it);
+            listeIts.clear();
+            listeIts.addAll(metier.getAllInter());
+        }else
+        {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choisissez un intervenant à supprimer");
+            alert.show();
+        }
     }
 
 

@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,6 +25,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static metier.MetierImpl.StaticIntervenant;
 
 public class IntervenantController implements Initializable {
 
@@ -52,6 +55,9 @@ public class IntervenantController implements Initializable {
     @FXML
     private TableColumn<OrdreTravail,String> otResponsable2;
 
+    @FXML
+    private Label labelBienvenue;
+
     ObservableList<OrdreTravail> liste= FXCollections.observableArrayList();
     ObservableList<OrdreTravail> liste2= FXCollections.observableArrayList();
     private IMetier metier;
@@ -69,10 +75,13 @@ public class IntervenantController implements Initializable {
         otPriorite2.setCellValueFactory(new PropertyValueFactory<>("priorite"));
         otEntreprise2.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         otResponsable2.setCellValueFactory(new PropertyValueFactory<>("responsable"));
-
         metier = new MetierImpl();
+        labelBienvenue.setText(labelBienvenue.getText()+" "+StaticIntervenant);
 
-        List<OrdreTravail> ots = metier.getAllOrdreTravail(); List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
+
+
+        List<OrdreTravail> ots = metier.getOrdreTravailIntervenant(StaticIntervenant);
+        List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
         for(OrdreTravail ot : ots){
             if(ot.isEtat()) {
                 ots2.add(ot);
@@ -91,7 +100,8 @@ public class IntervenantController implements Initializable {
     }
 
     public void actualiser(){
-        List<OrdreTravail> ots = metier.getAllOrdreTravail(); List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
+        List<OrdreTravail> ots = metier.getOrdreTravailIntervenant(StaticIntervenant);
+        List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
         for(OrdreTravail otr : ots){
             if(otr.isEtat()) {
                 ots2.add(otr);
@@ -112,8 +122,9 @@ public class IntervenantController implements Initializable {
         int indice=tableOts.getSelectionModel().getSelectedIndex();
         OrdreTravail ot = tableOts.getSelectionModel().getSelectedItem();
         if(indice>=0) {
+
         OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(),ot.getDate(),ot.getTypeService(),ot.getDescription(),ot.getTemps(),ot.getBudget(),ot.getPriorite(),true,ot.getResponsable(),ot.getIntervenant(),ot.getEntreprise());
-        //metier = new MetierImpl();
+       // metier = new MetierImpl();
         metier.modifierOrdreTravail(ot1);
         actualiser();
 
@@ -150,6 +161,16 @@ public class IntervenantController implements Initializable {
         stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
         stage.show();
 
+    }
+
+    public void mailbtn(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(IntervenantController.class.getResource("../presentation/mail_to_responsable.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
     }
 
 

@@ -17,7 +17,7 @@ public class Application   {
         //System.out.println(imp.getResponsable());
 
         //EnvoiMail.sendMail("maintenance.app00@gmail.com");
-        EnvoiMail.sendMail("bertrandkafando07@gmail.com ");
+       // EnvoiMail.sendMail("bertrandkafando07@gmail.com ");
 
     }
 

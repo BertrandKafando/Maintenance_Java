@@ -114,7 +114,7 @@ public class ControllerResponsable  implements Initializable {
         }else
         {
             Alert alert=new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Choisisser la ligne");
+            alert.setContentText("Choisissez un ordre de travail à supprimer");
             alert.show();
         }
 

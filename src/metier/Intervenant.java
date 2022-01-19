@@ -19,6 +19,15 @@ public class Intervenant {
         this.password = password;
     }
 
+    public Intervenant(String nom, String prenom, String email, String tel, String adresse, String password) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.tel = tel;
+        this.adresse = adresse;
+        this.password = password;
+    }
+
     public int getId_intervenant() {
         return id_intervenant;
     }
