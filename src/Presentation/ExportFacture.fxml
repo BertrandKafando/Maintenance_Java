@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExportController">
+   <children>
+      <TableView fx:id="tableFacture" layoutX="108.0" layoutY="100.0" prefHeight="200.0" prefWidth="423.0">
+        <columns>
+          <TableColumn fx:id="ClOrdre" prefWidth="75.0" text="Ordre" />
+          <TableColumn fx:id="ClDate" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="ClDate1" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="ClIntervenant" prefWidth="75.0" text="Intervenant" />
+            <TableColumn fx:id="ClMontant" prefWidth="134.0" text="Montant TTC" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="comboEntreprise" layoutX="201.0" layoutY="62.0" prefHeight="25.0" prefWidth="190.0" promptText="choisir une entreprise" />
+      <Label layoutX="177.0" layoutY="333.0" text="Total TTC" />
+      <Label fx:id="total" layoutX="286.0" layoutY="333.0" text="Label" />
+      <Label layoutX="176.0" layoutY="307.0" text="Entreprise" />
+      <Label layoutX="286.0" layoutY="307.0" text="Label" />
+   </children>
+</AnchorPane>
