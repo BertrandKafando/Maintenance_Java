@@ -314,8 +314,22 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-    public List<Materiel> getMateriels() {
-        return null;
+    public List<Materiel>getAllMateriel(){
+        Connection conn = SingletonConnexionDB.getConnection();
+        List<Materiel> materiels = new ArrayList<>();
+
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from materiel");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                Materiel materiel = new Materiel(rs.getInt(1), rs.getString(2) );
+
+                materiels.add(materiel);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return materiels;
     }
 
     @Override
@@ -396,8 +410,7 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
         return entrprises;
-<<<<<<< HEAD
-=======
+
     }
     public List<Entreprise> getEntreprises() {
         Connection connection=SingletonConnexionDB.getConnection();
@@ -417,7 +430,6 @@ public class MetierImpl implements IMetier{
         }
 
         return liste;
->>>>>>> 3daf6259030172e3fcb38488c52c4c67ce2b6465
     }
 
     @Override
@@ -481,10 +493,7 @@ public class MetierImpl implements IMetier{
         Connection conn=SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
-<<<<<<< HEAD
-=======
 
->>>>>>> 3daf6259030172e3fcb38488c52c4c67ce2b6465
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());

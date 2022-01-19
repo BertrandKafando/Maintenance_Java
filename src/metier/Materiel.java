@@ -13,6 +13,8 @@ public class Materiel {
         this.designation = designation;
     }
 
+
+
     public int getId_materiel() {
         return id_materiel;
     }
