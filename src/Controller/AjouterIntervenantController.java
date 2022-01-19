@@ -10,6 +10,8 @@ import metier.MetierImpl;
 
 import javax.mail.MessagingException;
 
+import static Controller.GestionIntervenantController.listeIts;
+
 public class AjouterIntervenantController {
     @FXML
     private TextField fieldNom;
@@ -38,6 +40,8 @@ public class AjouterIntervenantController {
 
         Intervenant it = new Intervenant(nom,prenom,adr,tel,email,mdp);
         metier.AddInter(it);
+        listeIts.clear();
+        listeIts.addAll(metier.getAllInter());
 
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("L'intervenant a été ajouté avec succès");

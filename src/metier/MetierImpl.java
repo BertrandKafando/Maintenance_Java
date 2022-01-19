@@ -392,10 +392,11 @@ public class MetierImpl implements IMetier{
 
                 entrprises.add(entreprise);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return entrprises;
+    }
     public List<Entreprise> getEntreprises() {
         Connection connection=SingletonConnexionDB.getConnection();
       List<Entreprise>liste=new ArrayList<>();
@@ -403,7 +404,7 @@ public class MetierImpl implements IMetier{
             PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
             ResultSet res= stm.executeQuery();
             while(res.next()){
-                Entreprise entreprise=new Entreprise();
+                Entreprise entreprise=null;
                 entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
              entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
              liste.add(entreprise);
@@ -459,7 +460,7 @@ public class MetierImpl implements IMetier{
         Connection conn=SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
-            PreparedStatement pstm=conn.prepareStatement("insert into intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());

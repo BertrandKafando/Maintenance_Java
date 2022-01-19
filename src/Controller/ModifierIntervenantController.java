@@ -11,6 +11,7 @@ import metier.MetierImpl;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static Controller.GestionIntervenantController.listeIts;
 import static Controller.GestionIntervenantController.staticIt;
 import static metier.MetierImpl.StaticIntervenant;
 
@@ -52,6 +53,9 @@ public class ModifierIntervenantController implements Initializable {
 
         Intervenant it = new Intervenant(staticIt.getId_intervenant(),nom,prenom,email,telephone,adresse,mdp);
         metier.updateInter(it);
+
+        listeIts.clear();
+        listeIts.addAll(metier.getAllInter());
 
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Les informations ont été mises à jour avec succès");
