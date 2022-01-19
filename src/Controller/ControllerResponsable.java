@@ -87,8 +87,8 @@ public class ControllerResponsable  implements Initializable {
         }else{
            Stage st=new Stage();
                 try {
-                    AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/newordre.fxml"));
-                    Scene scn=new Scene(pane,800,600);
+                    AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/modifierordre.fxml"));
+                    Scene scn=new Scene(pane,1200,600);
                     st.setScene(scn);
                     st.setTitle("remplir");
                     st.initModality(Modality.WINDOW_MODAL);

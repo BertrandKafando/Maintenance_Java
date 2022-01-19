@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddOrdre">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerModifierOrdreTravail">
    <children>
       <GridPane layoutX="141.0" layoutY="162.0" prefHeight="321.0" prefWidth="373.0">
         <columnConstraints>
@@ -37,7 +37,7 @@
             <ComboBox fx:id="service" prefHeight="21.0" prefWidth="196.0" promptText="choisir le service" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <GridPane layoutX="682.0" layoutY="99.0" prefHeight="221.0" prefWidth="373.0">
+      <GridPane layoutX="685.0" layoutY="175.0" prefHeight="221.0" prefWidth="373.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -58,28 +58,7 @@
             <ComboBox fx:id="entreprise" prefHeight="24.0" prefWidth="203.0" promptText="choisir une entreprise" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="447.0" layoutY="679.0" mnemonicParsing="false" onAction="#addOrdreTravail" text="Enregistrer" />
-      <Label layoutX="539.0" layoutY="52.0" text="Ordre de travail" />
-      <GridPane layoutX="848.0" layoutY="483.0" prefHeight="163.0" prefWidth="200.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="eseNom" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1" />
-            <TextField fx:id="eseTel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="eseEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Nom" />
-            <Label text="Telephone" GridPane.rowIndex="1" />
-            <Label text="Email" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
-      <Label layoutX="738.0" layoutY="442.0" text="Nouvelle Entrprise" />
-      <Button layoutX="896.0" layoutY="679.0" mnemonicParsing="false" onAction="#addEse" text="ajouter l'entreprise" />
+      <Button layoutX="563.0" layoutY="563.0" mnemonicParsing="false" onAction="#modifOrdreTravail" text="Modifier" />
+      <Label layoutX="487.0" layoutY="48.0" text="Ordre de travail" />
    </children>
 </AnchorPane>
