@@ -379,7 +379,6 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-<<<<<<< HEAD
     public List<Entreprise> getAllEntreprise() {
 
         Connection conn = SingletonConnexionDB.getConnection();
@@ -397,7 +396,6 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
         return entrprises;
-=======
     public List<Entreprise> getEntreprises() {
         Connection connection=SingletonConnexionDB.getConnection();
       List<Entreprise>liste=new ArrayList<>();
@@ -416,7 +414,6 @@ public class MetierImpl implements IMetier{
         }
 
         return liste;
->>>>>>> 7a03094d0db6fa373246a398f0e6b3e6ddbb5bdf
     }
 
     @Override
@@ -461,11 +458,8 @@ public class MetierImpl implements IMetier{
     public void AddInter(Intervenant inter) {
         Connection conn=SingletonConnexionDB.getConnection();
         try {
-<<<<<<< HEAD
             PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
-=======
             PreparedStatement pstm=conn.prepareStatement("insert into intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
->>>>>>> b9ac4c8e7640bb1bfacb667852bc02b390199182
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
