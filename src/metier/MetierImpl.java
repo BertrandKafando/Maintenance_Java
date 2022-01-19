@@ -229,9 +229,10 @@ public class MetierImpl implements IMetier{
     public void modifierlesinformations(Responsable responsable) {
         Connection connection=SingletonConnexionDB.getConnection();
         try{
-            PreparedStatement stm=connection.prepareStatement("update responsable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_");
+            PreparedStatement stm=connection.prepareStatement("update responsable set nom=?,prenom=?,email=?,telephone=?,adresse=?,password=?"+"where id_respon=?");
             stm.setString(1,responsable.getNom()); stm.setString(2,responsable.getPrenom()); stm.setString(3, responsable.getEmail());
             stm.setString(4, responsable.getTelephone());stm.setString(5, responsable.getAdresse());stm.setString(6,responsable.getPassword());
+            stm.setInt(7,responsable.getId_respon());
             stm.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -365,7 +366,23 @@ public class MetierImpl implements IMetier{
 
     @Override
     public List<Entreprise> getEntreprises() {
-        return null;
+        Connection connection=SingletonConnexionDB.getConnection();
+      List<Entreprise>liste=new ArrayList<>();
+        try{
+            PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
+            ResultSet res= stm.executeQuery();
+            while(res.next()){
+                Entreprise entreprise=new Entreprise();
+                entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
+             entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
+             liste.add(entreprise);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return liste;
     }
 
     @Override
@@ -410,7 +427,11 @@ public class MetierImpl implements IMetier{
     public void AddInter(Intervenant inter) {
         Connection conn=SingletonConnexionDB.getConnection();
         try {
+<<<<<<< HEAD
             PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+=======
+            PreparedStatement pstm=conn.prepareStatement("insert into intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+>>>>>>> b9ac4c8e7640bb1bfacb667852bc02b390199182
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
