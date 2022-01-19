@@ -42,7 +42,7 @@ public class GestionIntervenantController implements Initializable {
     @FXML
     private TableColumn<Intervenant,String> itMdp;
 
-    ObservableList<Intervenant> listeIts= FXCollections.observableArrayList();
+   static ObservableList<Intervenant> listeIts= FXCollections.observableArrayList();
     private IMetier metier;
 
     static Intervenant staticIt;

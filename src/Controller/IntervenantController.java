@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static Controller.LoginController.stage2;
 import static metier.MetierImpl.StaticIntervenant;
 
 public class IntervenantController implements Initializable {
@@ -173,5 +174,8 @@ public class IntervenantController implements Initializable {
         stage.show();
     }
 
+    public  void quitter(){
+            stage2.close();
+    }
 
 }

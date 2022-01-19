@@ -37,6 +37,8 @@ public class LoginController implements Initializable {
                     "responsable",
                     "intervenant"
             );
+    static Stage stage2 ;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         comboBox.setItems(profession);
@@ -70,13 +72,16 @@ public class LoginController implements Initializable {
              if(comboBox.getValue()=="intervenant")
              {
 
-                 Stage stage = new Stage();
+                 stage2 = new Stage();
                  Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/pp_intervenant.fxml"));
-                 stage.setScene(new Scene(root));
-                 stage.setTitle("");
-                 stage.initModality(Modality.WINDOW_MODAL);
+                 stage2.setScene(new Scene(root));
+                 stage2.setTitle("");
+                 stage2.initModality(Modality.WINDOW_MODAL);
                 // stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
-                 stage.show();
+                 stage2.show();
+                 mail.clear();
+                 password.clear();
+
 
              }
              else{
@@ -93,7 +98,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void ouvrirEmploye(ActionEvent event) throws IOException {
+   /* public void ouvrirEmploye(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/pp_intervenant.fxml"));
         stage.setScene(new Scene(root));
@@ -102,6 +107,6 @@ public class LoginController implements Initializable {
         stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
         stage.show();
 
-    }
+    }*/
 
 }

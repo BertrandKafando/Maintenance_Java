@@ -9,15 +9,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntervenantController">
    <children>
-      <Label fx:id="labelBienvenue" layoutX="220.0" layoutY="23.0" text="Bienvenue sur votre Espace M. " textFill="#141cbc">
+      <Label fx:id="labelBienvenue" layoutX="220.0" layoutY="23.0" text="Bienvenue sur votre Espace " textFill="#141cbc">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Label layoutX="162.0" layoutY="51.0" text="Ici vous verrez les ordres de travail qui vous sont assignés" textFill="#2c0dab">
-         <font>
-            <Font size="13.0" />
-         </font>
+          <font>
+              <Font name="System Bold" size="13.0" />
+          </font>
       </Label>
       <TableView fx:id="tableOts" layoutX="4.0" layoutY="99.0" prefHeight="259.0" prefWidth="625.0">
         <columns>
@@ -28,9 +28,18 @@
             <TableColumn fx:id="otResponsable" prefWidth="127.0" style="-fx-alignment: center" text="Responsable" />
         </columns>
       </TableView>
-      <Button layoutX="626.0" layoutY="20.0" mnemonicParsing="false" onAction="#modifierInfosPerso" text="Modifiez vos informations personnelles" textFill="#036810" />
-      <Button layoutX="661.0" layoutY="136.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="25.0" prefWidth="153.0" text="Marquer comme Terminé" textFill="#1f0bd7" />
-      <Button layoutX="681.0" layoutY="58.0" mnemonicParsing="false" text="Déconnectez-vous" textFill="#046b1c" />
+      <Button layoutX="618.0" layoutY="18.0" mnemonicParsing="false" onAction="#modifierInfosPerso" prefHeight="29.0" prefWidth="260.0" text="Modifiez vos informations personnelles" textFill="#036810">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="661.0" layoutY="136.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="29.0" prefWidth="191.0" text="Marquer comme Terminé" textFill="#1f0bd7">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="717.0" layoutY="63.0" mnemonicParsing="false" onAction="#quitter" text="Quitter" textFill="#046b1c">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
 
       <Label layoutX="14.0" layoutY="77.0" text="En cours">
          <font>
@@ -51,11 +60,14 @@
             <TableColumn fx:id="otResponsable2" prefWidth="122.0" style="-fx-alignment: center" text="Responsable" />
         </columns>
       </TableView>
-      <Button layoutX="665.0" layoutY="529.0" mnemonicParsing="false" text="Contacter un responsable" textFill="#6609c9" onAction="#mailbtn">
-         <font>
-            <Font size="13.0" />
-         </font>
+      <Button layoutX="678.0" layoutY="528.0" mnemonicParsing="false" onAction="#mailbtn" text="Contacter un responsable" textFill="#6609c9">
+          <font>
+              <Font name="System Bold" size="13.0" />
+          </font>
       </Button>
-      <Button layoutX="661.0" layoutY="428.0" mnemonicParsing="false" onAction="#modifierEtat2" text="Marquer comme non terminé" textFill="#3003ab" />
+      <Button layoutX="661.0" layoutY="428.0" mnemonicParsing="false" onAction="#modifierEtat2" text="Marquer comme non terminé" textFill="#3003ab">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>
