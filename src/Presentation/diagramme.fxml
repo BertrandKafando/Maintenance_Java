@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerGantt">
+   <children>
+      <StackedBarChart fx:id="gantt" layoutX="79.0" layoutY="121.0" prefHeight="478.0" prefWidth="795.0" title="diagramme de gant">
+          <xAxis>
+              <NumberAxis label="durée" prefHeight="40.0" prefWidth="622.0" side="BOTTOM" fx:id="xx" />
+          </xAxis>
+        <yAxis>
+          <CategoryAxis fx:id="yy" label="intervenants" prefHeight="291.0" prefWidth="28.0" side="LEFT" />
+        </yAxis>
+
+      </StackedBarChart>
+   </children>
+</AnchorPane>

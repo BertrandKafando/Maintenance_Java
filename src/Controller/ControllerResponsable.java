@@ -49,7 +49,7 @@ public class ControllerResponsable  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         service.setCellValueFactory(new PropertyValueFactory<>("typeService"));
-        des.setCellValueFactory(new PropertyValueFactory<>("typeService"));
+        des.setCellValueFactory(new PropertyValueFactory<>("description"));
         pri.setCellValueFactory(new PropertyValueFactory<>("priorite"));
         intervenant.setCellValueFactory(new PropertyValueFactory<>("intervenant"));
         entr.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
@@ -169,7 +169,7 @@ public class ControllerResponsable  implements Initializable {
     public  void planification(ActionEvent event){
         Stage st=new Stage();
         try {
-            AnchorPane pane= FXMLLoader.load(getClass().getResource("planification.fxml"));
+            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/diagramme.fxml"));
             Scene scn=new Scene(pane,1000,600);
             st.setScene(scn);
             st.setTitle("Diagramme");
