@@ -392,28 +392,10 @@ public class MetierImpl implements IMetier{
 
                 entrprises.add(entreprise);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return entrprises;
-    public List<Entreprise> getEntreprises() {
-        Connection connection=SingletonConnexionDB.getConnection();
-      List<Entreprise>liste=new ArrayList<>();
-        try{
-            PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
-            ResultSet res= stm.executeQuery();
-            while(res.next()){
-                Entreprise entreprise=new Entreprise();
-                entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
-             entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
-             liste.add(entreprise);
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        return liste;
     }
 
     @Override
@@ -434,7 +416,25 @@ public class MetierImpl implements IMetier{
         }
         return inter;
     }
+        /*public List<Entreprise> getEntreprises() {
+            Connection connection=SingletonConnexionDB.getConnection();
+            List<Entreprise>liste=new ArrayList<>();
+            try{
+                PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
+                ResultSet res= stm.executeQuery();
+                while(res.next()){
+                    Entreprise entreprise=new Entreprise();
+                    entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
+                    entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
+                    liste.add(entreprise);
+                }
 
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            return liste;
+        }*/
     @Override
     public Intervenant searchInterByName(String name) {
         Connection conn=SingletonConnexionDB.getConnection();
@@ -459,7 +459,6 @@ public class MetierImpl implements IMetier{
         Connection conn=SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
-            PreparedStatement pstm=conn.prepareStatement("insert into intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
@@ -507,6 +506,7 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
     }
+
     public Intervenant nameInterToObject(String name){
         Connection conn = SingletonConnexionDB.getConnection();
         Intervenant inter = null;
@@ -578,5 +578,7 @@ public class MetierImpl implements IMetier{
         }
         return  test;
     }
+
     }
+
 
