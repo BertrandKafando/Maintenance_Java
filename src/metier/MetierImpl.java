@@ -141,7 +141,7 @@ public class MetierImpl implements IMetier{
                 if(rs2.next()){
                     e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
                 }
-                OrdreTravail ot=new OrdreTravail(rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
+                OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
                         rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }
@@ -259,8 +259,22 @@ public class MetierImpl implements IMetier{
 
     @Override
     public List<Responsable> getResponsables() {
-        return null;
+
+        Connection conn=SingletonConnexionDB.getConnection();
+        List<Responsable> resps=new ArrayList<>();
+        try {
+            PreparedStatement pstm=conn.prepareStatement("select * from responsable");
+            ResultSet rs= pstm.executeQuery();
+            while (rs.next()){
+                Responsable r=new Responsable(rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),rs.getString("telephone"),rs.getString("adresse"),rs.getString("password"));
+                resps.add(r);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  resps;
     }
+
 
     @Override
     public void ajouterMateriel(Materiel materiel) {
@@ -365,6 +379,7 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
+<<<<<<< HEAD
     public List<Entreprise> getAllEntreprise() {
 
         Connection conn = SingletonConnexionDB.getConnection();
@@ -382,6 +397,26 @@ public class MetierImpl implements IMetier{
             e.printStackTrace();
         }
         return entrprises;
+=======
+    public List<Entreprise> getEntreprises() {
+        Connection connection=SingletonConnexionDB.getConnection();
+      List<Entreprise>liste=new ArrayList<>();
+        try{
+            PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
+            ResultSet res= stm.executeQuery();
+            while(res.next()){
+                Entreprise entreprise=new Entreprise();
+                entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
+             entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
+             liste.add(entreprise);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return liste;
+>>>>>>> 7a03094d0db6fa373246a398f0e6b3e6ddbb5bdf
     }
 
     @Override
@@ -426,7 +461,11 @@ public class MetierImpl implements IMetier{
     public void AddInter(Intervenant inter) {
         Connection conn=SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,tel,adresse,password) values (?,?,?,?,?,?)");
+<<<<<<< HEAD
+            PreparedStatement pstm=conn.prepareStatement("insert into Intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+=======
+            PreparedStatement pstm=conn.prepareStatement("insert into intervenant(nom,prenom,email,telephone,adresse,password) values (?,?,?,?,?,?)");
+>>>>>>> b9ac4c8e7640bb1bfacb667852bc02b390199182
             pstm.setString(1,inter.getNom());
             pstm.setString(2,inter.getPrenom());
             pstm.setString(3,inter.getEmail());
@@ -443,12 +482,12 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-    public void deleteInter(int id) {
+    public void deleteInter(Intervenant it) {
 
         Connection conn=SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("delete  from intervenant where id_intervenant = ?" );
-            pstm.setInt(1,id );
+            pstm.setInt(1,it.getId_intervenant() );
             pstm.executeUpdate();
 
         }

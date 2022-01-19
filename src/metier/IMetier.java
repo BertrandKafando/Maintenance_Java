@@ -40,7 +40,7 @@ public interface IMetier {
     Intervenant searchInterById(int id);
     Intervenant searchInterByName(String name);
     void AddInter(Intervenant inter);
-    void deleteInter(int id);
+    void deleteInter(Intervenant it);
     void updateInter(Intervenant inter);
     Intervenant nameInterToObject(String name);
     List<Intervenant> getAllInter();

@@ -13,6 +13,12 @@ public class Entreprise {
         this.email = email;
     }
 
+<<<<<<< HEAD
+=======
+    public Entreprise() {
+    }
+
+>>>>>>> 7a03094d0db6fa373246a398f0e6b3e6ddbb5bdf
     public Entreprise(String nom, String telephone, String email) {
         this.nom = nom;
         this.telephone = telephone;

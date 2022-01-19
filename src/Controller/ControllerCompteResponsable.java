@@ -7,11 +7,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import metier.MetierImpl;
-import metier.Responsable;
+import metier.*;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerCompteResponsable implements Initializable {
@@ -41,8 +41,33 @@ MetierImpl imp =new MetierImpl();
     public void initialize(URL location, ResourceBundle resources) {
       Image nw=  new Image(getClass().getResourceAsStream("img.jpg"));
         img.setImage(nw);
-      //  Responsable responsable= new Responsable("Kafando","Bertrand","kaf@gmail","tel","add","pass");
-      //  imp.ajouterResponsable(responsable);
+      /*  Responsable responsable= new Responsable("Kafando","Bertrand","kaf@gmail","tel","add","pass");
+       imp.ajouterResponsable(responsable);
+        Intervenant inter=new Intervenant("diallo","assimi","mail","tele","add","pass");
+        Intervenant inter1=new Intervenant("mochine","mochine","mail","tele","add","pass");
+        imp.AddInter(inter); imp.AddInter(inter1);
+
+       */
+      /* Entreprise ent1= new Entreprise("enset","tel","mail");
+       Entreprise ent2= new Entreprise("enset.com","tel","mail");
+     imp.ajouterEntreprise(ent1); imp.ajouterEntreprise(ent2);
+
+       */
+/*
+       OrdreTravail ord1=new OrdreTravail(new Date(),"type2","descipt",10, 2000,5, false, imp.getResponsable(),imp.getAllInter().get(0),
+       imp.getEntreprises().get(0));
+        OrdreTravail ord2=new OrdreTravail(new Date(),"type1","des",20, 2000,5, false, imp.getResponsable(),imp.getAllInter().get(0),
+                imp.getEntreprises().get(1));
+              OrdreTravail or1=new OrdreTravail(new Date(),"type1","descript",10, 2000,5, false, imp.getResponsable(),imp.getAllInter().get(1), imp.getEntreprises().get(0)
+               );
+        OrdreTravail or2=new OrdreTravail(new Date(),"type2","des",5, 2000,5, false, imp.getResponsable(),imp.getAllInter().get(1),
+                imp.getEntreprises().get(1));
+
+        imp.ajouterOrdreTravail(or1);imp.ajouterOrdreTravail(or2);imp.ajouterOrdreTravail(ord1);imp.ajouterOrdreTravail(ord2);
+
+*/
+
+
         cnm.setPromptText(imp.getResponsable().getNom());
         cpr.setPromptText(imp.getResponsable().getPrenom());
         cmail.setPromptText(imp.getResponsable().getEmail());
