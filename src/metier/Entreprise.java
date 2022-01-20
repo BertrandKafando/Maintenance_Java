@@ -5,18 +5,21 @@ public class Entreprise {
     private String nom;
     private String telephone;
     private String email;
+    private String adresse;
 
-    public Entreprise(int id_entr, String nom, String telephone, String email) {
+    public Entreprise(int id_entr, String nom, String telephone, String email, String adresse) {
         this.id_entr = id_entr;
         this.nom = nom;
         this.telephone = telephone;
         this.email = email;
+        this.adresse = adresse;
     }
 
-    public Entreprise(String nom, String telephone, String email) {
+    public Entreprise(String nom, String telephone, String email,String adresse) {
         this.nom = nom;
         this.telephone = telephone;
         this.email = email;
+        this.adresse = adresse;
     }
 
     public int getId_entr() {
@@ -49,6 +52,14 @@ public class Entreprise {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     @Override

@@ -139,7 +139,7 @@ public class MetierImpl implements IMetier{
                 ResultSet rs2= pstm2.executeQuery();
                 Entreprise e=null;
                 if(rs2.next()){
-                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
+                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"),rs2.getString("ADRESSE"));
                 }
                 OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
                         rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
@@ -173,7 +173,7 @@ public class MetierImpl implements IMetier{
                 ResultSet rs2= pstm2.executeQuery();
                 Entreprise e=null;
                 if(rs2.next()){
-                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"));
+                    e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"),rs2.getString("ADRESSE"));
                 }
 
                 PreparedStatement stm=conn.prepareStatement("select * from intervenant where id_intervenant=?");
@@ -333,17 +333,56 @@ public class MetierImpl implements IMetier{
     }
 
     @Override
-    public List<Materiel> getMaterielsbyordres(OrdreTravail odt) {
-        return null;
+    public List<MaterielQte> getMaterielsbyordres(OrdreTravail odt) {
+        Connection conn=SingletonConnexionDB.getConnection();
+        List<MaterielQte> mqs=new ArrayList<>();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from materiel_ordre where id_ordretravail=? ");
+            pstm.setInt(1,odt.getNumOrdreTravail());
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                PreparedStatement pstm1 = conn.prepareStatement("select * from materiel where id_materiel=?");
+                pstm1.setInt(1, rs.getInt("id_materiel"));
+                ResultSet rs1 = pstm1.executeQuery();
+
+                Materiel m=null;
+                if (rs1.next()) {
+                    m= new Materiel(rs1.getInt("id_materiel"), rs1.getString("designation"));
+                }
+                MaterielQte mq = new MaterielQte(m,rs.getInt("quantité"));
+                mqs.add(mq);
+            }
+        }catch (Exception e){
+        e.printStackTrace();
+    }
+  return mqs;
+
+    }
+
+    @Override
+    public void ajouterMaterielAOrdreTravail(OrdreTravail ot, Materiel materiel, int quantite){
+        Connection conn=SingletonConnexionDB.getConnection();
+        try {
+            PreparedStatement pstm=conn.prepareStatement("insert into materiel_ordre(id_materiel,id_ordretravail,quantité) values (?,?,?)");
+
+            pstm.setInt(1,materiel.getId_materiel());
+            pstm.setInt(2,ot.getNumOrdreTravail());
+            pstm.setInt(3,quantite);
+
+            pstm.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void ajouterEntreprise(Entreprise entreprise) {
         Connection connection=SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=connection.prepareStatement("insert into entreprise(nom,telephone,email) values (?,?,?)");
+            PreparedStatement pstm=connection.prepareStatement("insert into entreprise(nom,telephone,email,adresse) values (?,?,?,?)");
             pstm.setString(1,entreprise.getNom());
             pstm.setString(2,entreprise.getTelephone()); pstm.setString(3,entreprise.getEmail());
+            pstm.setString(4,entreprise.getAdresse());
             pstm.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -385,7 +424,7 @@ public class MetierImpl implements IMetier{
             pstm.setString(1, name);
             ResultSet rs = pstm.executeQuery();
             if(rs.next())
-                entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString("ADRESSE"));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -402,7 +441,7 @@ public class MetierImpl implements IMetier{
             PreparedStatement pstm = conn.prepareStatement("select * from entreprise");
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                Entreprise entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                Entreprise entreprise = new Entreprise(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString("ADRESSE"));
 
                 entrprises.add(entreprise);
             }
@@ -422,6 +461,7 @@ public class MetierImpl implements IMetier{
                 Entreprise entreprise=null;
                 entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
              entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
+             entreprise.setAdresse(res.getString(5));
              liste.add(entreprise);
             }
 
@@ -613,6 +653,7 @@ public class MetierImpl implements IMetier{
         }
         return  test;
     }
+
 
     }
 

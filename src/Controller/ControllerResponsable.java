@@ -44,6 +44,7 @@ public class ControllerResponsable  implements Initializable {
     MetierImpl metierip =new MetierImpl();
     ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
     public  static Responsable responsableS=null;
+    static OrdreTravail staticOt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -190,6 +191,27 @@ public class ControllerResponsable  implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void btnAjouterMateriel(){
+        Stage st=new Stage();
+        staticOt = tablev.getSelectionModel().getSelectedItem();
+        if(staticOt==null) {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choisissez un ordre de travail auquel ajouter du materiel");
+            alert.show();
+        }else{
+            try {
+                AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/ajout_materiel.fxml"));
+                Scene scn=new Scene(pane);
+                st.setScene(scn);
+                st.setTitle("");
+                st.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 }

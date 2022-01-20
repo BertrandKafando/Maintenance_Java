@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import metier.IMetier;
@@ -36,32 +37,36 @@ public class IntervenantController implements Initializable {
     @FXML
     private TableView<OrdreTravail> tableOts2;
     @FXML
-    private TableColumn<OrdreTravail,String> otService;
+    private TableColumn<OrdreTravail, String> otService;
     @FXML
-    private TableColumn<OrdreTravail,String> otDescription;
+    private TableColumn<OrdreTravail, String> otDescription;
     @FXML
-    private TableColumn<OrdreTravail,Integer> otPriorite;
+    private TableColumn<OrdreTravail, Integer> otPriorite;
     @FXML
-    private TableColumn<OrdreTravail,String> otEntreprise;
+    private TableColumn<OrdreTravail, String> otEntreprise;
     @FXML
-    private TableColumn<OrdreTravail,String> otResponsable;
+    private TableColumn<OrdreTravail, String> otResponsable;
     @FXML
-    private TableColumn<OrdreTravail,String> otService2;
+    private TableColumn<OrdreTravail, String> otService2;
     @FXML
-    private TableColumn<OrdreTravail,String> otDescription2;
+    private TableColumn<OrdreTravail, String> otDescription2;
     @FXML
-    private TableColumn<OrdreTravail,Integer> otPriorite2;
+    private TableColumn<OrdreTravail, Integer> otPriorite2;
     @FXML
-    private TableColumn<OrdreTravail,String> otEntreprise2;
+    private TableColumn<OrdreTravail, String> otEntreprise2;
     @FXML
-    private TableColumn<OrdreTravail,String> otResponsable2;
+    private TableColumn<OrdreTravail, String> otResponsable2;
 
     @FXML
     private Label labelBienvenue;
 
-    ObservableList<OrdreTravail> liste= FXCollections.observableArrayList();
-    ObservableList<OrdreTravail> liste2= FXCollections.observableArrayList();
+    ObservableList<OrdreTravail> liste = FXCollections.observableArrayList();
+    ObservableList<OrdreTravail> liste2 = FXCollections.observableArrayList();
     private IMetier metier;
+
+    static OrdreTravail staticOt3;
+    static Stage st;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -77,17 +82,16 @@ public class IntervenantController implements Initializable {
         otEntreprise2.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         otResponsable2.setCellValueFactory(new PropertyValueFactory<>("responsable"));
         metier = new MetierImpl();
-        labelBienvenue.setText(labelBienvenue.getText()+" "+StaticIntervenant);
-
+        labelBienvenue.setText(labelBienvenue.getText() + " " + StaticIntervenant);
 
 
         List<OrdreTravail> ots = metier.getOrdreTravailIntervenant(StaticIntervenant);
-        List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
-        for(OrdreTravail ot : ots){
-            if(ot.isEtat()) {
+        List<OrdreTravail> ots1 = new ArrayList<>();
+        List<OrdreTravail> ots2 = new ArrayList<>();
+        for (OrdreTravail ot : ots) {
+            if (ot.isEtat()) {
                 ots2.add(ot);
-            }
-            else{
+            } else {
                 ots1.add(ot);
             }
         }
@@ -100,14 +104,14 @@ public class IntervenantController implements Initializable {
 
     }
 
-    public void actualiser(){
+    public void actualiser() {
         List<OrdreTravail> ots = metier.getOrdreTravailIntervenant(StaticIntervenant);
-        List<OrdreTravail> ots1 = new ArrayList<>(); List<OrdreTravail> ots2 = new ArrayList<>();
-        for(OrdreTravail otr : ots){
-            if(otr.isEtat()) {
+        List<OrdreTravail> ots1 = new ArrayList<>();
+        List<OrdreTravail> ots2 = new ArrayList<>();
+        for (OrdreTravail otr : ots) {
+            if (otr.isEtat()) {
                 ots2.add(otr);
-            }
-            else{
+            } else {
                 ots1.add(otr);
             }
         }
@@ -119,35 +123,34 @@ public class IntervenantController implements Initializable {
         liste.addAll(ots1);
     }
 
-    public void modifierEtat(){
-        int indice=tableOts.getSelectionModel().getSelectedIndex();
+    public void modifierEtat() {
+        int indice = tableOts.getSelectionModel().getSelectedIndex();
         OrdreTravail ot = tableOts.getSelectionModel().getSelectedItem();
-        if(indice>=0) {
+        if (indice >= 0) {
 
-        OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(),ot.getDate(),ot.getTypeService(),ot.getDescription(),ot.getTemps(),ot.getBudget(),ot.getPriorite(),true,ot.getResponsable(),ot.getIntervenant(),ot.getEntreprise());
-       // metier = new MetierImpl();
-        metier.modifierOrdreTravail(ot1);
-        actualiser();
+            OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(), ot.getDate(), ot.getTypeService(), ot.getDescription(), ot.getTemps(), ot.getBudget(), ot.getPriorite(), true, ot.getResponsable(), ot.getIntervenant(), ot.getEntreprise());
+            // metier = new MetierImpl();
+            metier.modifierOrdreTravail(ot1);
+            actualiser();
 
-        }else{
-            Alert alert=new Alert(Alert.AlertType.WARNING);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Veuillez sélectionner un ordre de travail non terminé  ");
             alert.show();
         }
     }
 
 
-
-    public  void modifierEtat2(){
-        int indice=tableOts2.getSelectionModel().getSelectedIndex();
+    public void modifierEtat2() {
+        int indice = tableOts2.getSelectionModel().getSelectedIndex();
         OrdreTravail ot = tableOts2.getSelectionModel().getSelectedItem();
-        if(indice>=0) {
-            OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(),ot.getDate(),ot.getTypeService(),ot.getDescription(),ot.getTemps(),ot.getBudget(),ot.getPriorite(),false,ot.getResponsable(),ot.getIntervenant(),ot.getEntreprise());
+        if (indice >= 0) {
+            OrdreTravail ot1 = new OrdreTravail(ot.getNumOrdreTravail(), ot.getDate(), ot.getTypeService(), ot.getDescription(), ot.getTemps(), ot.getBudget(), ot.getPriorite(), false, ot.getResponsable(), ot.getIntervenant(), ot.getEntreprise());
             //metier = new MetierImpl();
             metier.modifierOrdreTravail(ot1);
             actualiser();
-        }else{
-            Alert alert=new Alert(Alert.AlertType.WARNING);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Veuillez sélectionner un ordre de travail terminé ");
             alert.show();
         }
@@ -159,7 +162,7 @@ public class IntervenantController implements Initializable {
         stage.setScene(new Scene(root));
         stage.setTitle("");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         stage.show();
 
     }
@@ -170,12 +173,32 @@ public class IntervenantController implements Initializable {
         stage.setScene(new Scene(root));
         stage.setTitle("");
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         stage.show();
     }
 
-    public  void quitter(){
-            stage2.close();
+    public void quitter() {
+        stage2.close();
     }
 
+    public void afficherDetails() {
+        st = new Stage();
+        staticOt3 = tableOts.getSelectionModel().getSelectedItem();
+        if (staticOt3 == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Choisissez un ordre de travail auquel ajouter du materiel");
+            alert.show();
+        } else {
+            try {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("../Presentation/details_ordre.fxml"));
+                Scene scn = new Scene(pane);
+                st.setScene(scn);
+                st.setTitle("");
+                st.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

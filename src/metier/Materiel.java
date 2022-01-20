@@ -30,4 +30,9 @@ public class Materiel {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
+
+    @Override
+    public String toString() {
+        return designation;
+    }
 }

@@ -32,6 +32,7 @@ public class AddOrdre implements Initializable {
     @FXML private TextField eseNom;
     @FXML private TextField eseTel;
     @FXML private TextField eseEmail;
+    @FXML private TextField eseAdresse;
     @FXML private ComboBox<String > entreprise;
     @FXML private ComboBox<String > intervenant;
     @FXML private ComboBox<String > service;
@@ -64,7 +65,7 @@ public class AddOrdre implements Initializable {
         service.setItems(services);
     }
     public void addEse(){
-        Entreprise ese = new Entreprise(eseNom.getText(),eseTel.getText(),eseEmail.getText());
+        Entreprise ese = new Entreprise(eseNom.getText(),eseTel.getText(),eseEmail.getText(),eseAdresse.getText());
         metier.ajouterEntreprise(ese);
         updateListEntreprises();
 

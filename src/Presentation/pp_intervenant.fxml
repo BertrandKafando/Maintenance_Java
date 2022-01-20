@@ -69,5 +69,10 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
+      <Button layoutX="662.0" layoutY="181.0" mnemonicParsing="false" onAction="#afficherDetails" text="Afficher les détails de l'orde" textFill="#0b9c2d">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

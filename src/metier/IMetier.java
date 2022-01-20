@@ -27,7 +27,10 @@ public interface IMetier {
     void supprimerMateriel(Materiel materiel);
     void modifierMateriel(Materiel materiel);
     List<Materiel>getAllMateriel();
-    List<Materiel>getMaterielsbyordres(OrdreTravail odt);
+    List<MaterielQte>getMaterielsbyordres(OrdreTravail odt);
+
+    void ajouterMaterielAOrdreTravail(OrdreTravail ot, Materiel materiel,int quantite);
+
 
 
     void ajouterEntreprise(Entreprise entreprise);
