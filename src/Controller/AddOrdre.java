@@ -7,11 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import metier.Entreprise;
-import metier.Intervenant;
-import metier.MetierImpl;
-import metier.OrdreTravail;
+import metier.*;
 
+import javax.mail.MessagingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,6 +82,12 @@ public class AddOrdre implements Initializable {
         //System.out.println( java.sql.Date.valueOf(date.getValue())+ service.getValue()+textDesc.getText()+ Integer.valueOf(textTemps.getText())+Double.valueOf(textBudget.getText())+Integer.valueOf(textPriority.getText())+ metier.getResponsable()+metier.nameInterToObject(name[1]));
         OrdreTravail ot = new OrdreTravail(java.sql.Date.valueOf(date.getValue()), service.getValue(), textDesc.getText(), Integer.valueOf(textTemps.getText()), Double.valueOf(textBudget.getText()), Integer.valueOf(textPriority.getText()), false, metier.getResponsable(), metier.nameInterToObject(name[0]), metier.nameEntrepriseToObject(entreprise.getValue()));
        metier.ajouterOrdreTravail(ot);
+
+        try {
+            EnvoiMail.sendMail(metier.nameInterToObject(name[0]).getEmail());
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
 }
