@@ -58,7 +58,7 @@ public class GestionIntervenantController implements Initializable {
 
         metier = new MetierImpl();
 
-        listeIts.addAll(metier.getAllInter());
+        listeIts.setAll(metier.getAllInter());
         tableIts.setItems(listeIts);
     }
 

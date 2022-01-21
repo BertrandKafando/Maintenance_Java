@@ -12,6 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -38,6 +40,8 @@ public class ControllerResponsable  implements Initializable {
     private TableColumn<OrdreTravail,Boolean>etat;
     @FXML
     private TableColumn<OrdreTravail, Integer>tmps;
+    @FXML
+    private ImageView img;
 
     public static OrdreTravail ord=null;
 
@@ -56,6 +60,9 @@ public class ControllerResponsable  implements Initializable {
         entr.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tmps.setCellValueFactory(new PropertyValueFactory<>("temps"));
+
+        Image nw=  new Image(getClass().getResourceAsStream("../image/img_81837noir.png"));
+        img.setImage(nw);
 
 
         liste.addAll(metierip.getAllOrdreTravail());

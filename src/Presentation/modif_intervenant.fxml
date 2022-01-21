@@ -21,11 +21,9 @@
       <TextField fx:id="fieldAdresse" layoutX="79.0" layoutY="274.0" />
       <Label layoutX="336.0" layoutY="126.0" text="Téléphone : " />
       <Label layoutX="336.0" layoutY="200.0" text="Adresse Email : " />
-      <Label layoutX="338.0" layoutY="278.0" text="Mot de passe : " />
       <TextField fx:id="fieldTelephone" layoutX="419.0" layoutY="122.0" />
       <TextField fx:id="fieldEmail" layoutX="419.0" layoutY="196.0" />
-      <TextField fx:id="fieldMdp" layoutX="419.0" layoutY="274.0" />
-      <Button layoutX="263.0" layoutY="329.0" mnemonicParsing="false" text="Valider" textFill="#0d85da" onAction="#modifierIntervenant">
+      <Button layoutX="263.0" layoutY="329.0" mnemonicParsing="false" onAction="#modifierIntervenant" text="Valider" textFill="#0d85da">
          <font>
             <Font size="16.0" />
          </font>

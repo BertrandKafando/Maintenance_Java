@@ -22,8 +22,7 @@ public class ModifierIntervenantController implements Initializable {
     private TextField fieldNom;
     @FXML
     private TextField fieldPrenom;
-    @FXML
-    private TextField fieldMdp;
+
     @FXML
     private TextField fieldAdresse;
     @FXML
@@ -40,7 +39,7 @@ public class ModifierIntervenantController implements Initializable {
         fieldAdresse.setText(staticIt.getAdresse());
         fieldTelephone.setText(staticIt.getTel());
         fieldEmail.setText(staticIt.getEmail());
-        fieldMdp.setText(staticIt.getPassword());
+        //fieldMdp.setText(staticIt.getPassword());
     }
 
     public void modifierIntervenant(){
@@ -49,9 +48,9 @@ public class ModifierIntervenantController implements Initializable {
         String adresse = fieldAdresse.getText();
         String telephone = fieldTelephone.getText();
         String email = fieldEmail.getText();
-        String mdp = fieldMdp.getText();
+       // String mdp = fieldMdp.getText();
 
-        Intervenant it = new Intervenant(staticIt.getId_intervenant(),nom,prenom,email,telephone,adresse,mdp);
+        Intervenant it = new Intervenant(staticIt.getId_intervenant(),nom,prenom,email,telephone,adresse,staticIt.getPassword());
         metier.updateInter(it);
 
         listeIts.clear();

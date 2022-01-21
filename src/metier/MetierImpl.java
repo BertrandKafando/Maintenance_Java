@@ -617,37 +617,38 @@ public class MetierImpl implements IMetier{
         return intervenants;
     }
 
-    public int login(String interOrResp, String email, String password){
+    public int login(String interOrResp, String email, String password) {
         Connection conn = SingletonConnexionDB.getConnection();
 
-           int test=0;
+        int test = 0;
         try {
             if (interOrResp.equals("intervenant")) {
                 PreparedStatement pstm = conn.prepareStatement("select * from intervenant where email = ?");
                 pstm.setString(1, email);
                 ResultSet rs = pstm.executeQuery();
                 rs.next();
-                if (rs!=null) {
-                    if (rs.getString(7).equals(password)){
+
+                if (rs != null) {
+                    if (rs.getString(7).equals(password)) {
                         StaticIntervenant = new Intervenant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                         test = 1;
-                    }
-                    else test = -1;
-                } else if (interOrResp.equals("responsable")) {
-                    PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
-                    pstm1.setString(1, email);
-                    ResultSet res = pstm1.executeQuery();
-                    rs.next();
-                    if (rs!=null) {
-                        if (rs.getString("password").equals(password)){
-                            StaticResponsable = new Responsable(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
-                            test = 1;
-                        }
-                        else test = -1;
-                    }
-
+                    } else test = -1;
                 }
+
+            } else if (interOrResp.equals("responsable")) {
+                PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
+                pstm1.setString(1, email);
+                ResultSet rs = pstm1.executeQuery();
+                rs.next();
+                if (rs != null) {
+                    if (rs.getString("password").equals(password)) {
+                        StaticResponsable = new Responsable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                        test = 1;
+                    } else test = -1;
+                }
+
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
