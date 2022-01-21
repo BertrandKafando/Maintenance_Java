@@ -34,8 +34,8 @@ public class LoginController implements Initializable {
     @FXML  private ComboBox<String > comboBox;
     ObservableList<String> profession =
             FXCollections.observableArrayList(
-                    "responsable",
-                    "intervenant"
+                    "Responsable",
+                    "Intervenant"
             );
     static Stage stage2 ;
 
@@ -51,7 +51,14 @@ public class LoginController implements Initializable {
         //Compile regular expression to get the pattern
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(mail.getText());
-        if( metier.login(comboBox.getValue(), mail.getText(), password.getText())==0 || !matcher.matches() )
+        if(comboBox.getValue()==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Attention!");
+            //alert.setHeaderText("Results:");
+            alert.setContentText("la choix de la profession est obligatoire");
+            alert.showAndWait();
+        }
+        else if( metier.login(comboBox.getValue(), mail.getText(), password.getText())==0 || !matcher.matches() )
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Invalid email");
@@ -69,7 +76,7 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         }
         else{
-             if(comboBox.getValue()=="intervenant")
+             if(comboBox.getValue()=="Intervenant")
              {
 
                  stage2 = new Stage();

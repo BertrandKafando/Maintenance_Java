@@ -622,7 +622,7 @@ public class MetierImpl implements IMetier{
 
            int test=0;
         try {
-            if (interOrResp.equals("intervenant")) {
+            if (interOrResp.equals("Intervenant")) {
                 PreparedStatement pstm = conn.prepareStatement("select * from intervenant where email = ?");
                 pstm.setString(1, email);
                 ResultSet rs = pstm.executeQuery();
@@ -633,7 +633,7 @@ public class MetierImpl implements IMetier{
                         test = 1;
                     }
                     else test = -1;
-                } else if (interOrResp.equals("responsable")) {
+                } else if (interOrResp.equals("Responsable")) {
                     PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
                     pstm1.setString(1, email);
                     ResultSet res = pstm1.executeQuery();
