@@ -632,7 +632,6 @@ public class MetierImpl implements IMetier{
                     if (rs.getString(7).equals(password)) {
                         StaticIntervenant = new Intervenant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                         test = 1;
-<<<<<<< HEAD
                     }
                     else test = -1;
                 } else if (interOrResp.equals("Responsable")) {
@@ -648,10 +647,8 @@ public class MetierImpl implements IMetier{
                         else test = -1;
                     }
 
-=======
                     } else test = -1;
->>>>>>> 3c3a2645d21e0fc96850d2c1c10790df45e0a970
-                }
+
 
             } else if (interOrResp.equals("responsable")) {
                 PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
