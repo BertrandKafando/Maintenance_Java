@@ -186,7 +186,7 @@ public class MetierImpl implements IMetier{
                 }
 
                 OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
-                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
+                        rs.getInt("TEMPS"),rs.getDouble("BUDGET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }
         }catch (Exception e){
