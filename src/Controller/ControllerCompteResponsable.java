@@ -14,6 +14,8 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import static metier.MetierImpl.StaticResponsable;
+
 public class ControllerCompteResponsable implements Initializable {
 
     @FXML
@@ -39,7 +41,7 @@ public class ControllerCompteResponsable implements Initializable {
 MetierImpl imp =new MetierImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      Image nw=  new Image(getClass().getResourceAsStream("img.jpg"));
+      Image nw=  new Image(getClass().getResourceAsStream("../image/img.jpg"));
         img.setImage(nw);
       /*  Responsable responsable= new Responsable("Kafando","Bertrand","kaf@gmail","tel","add","pass");
        imp.ajouterResponsable(responsable);
@@ -68,11 +70,11 @@ MetierImpl imp =new MetierImpl();
 */
 
 
-        cnm.setPromptText(imp.getResponsable().getNom());
-        cpr.setPromptText(imp.getResponsable().getPrenom());
-        cmail.setPromptText(imp.getResponsable().getEmail());
-        ctel.setPromptText(imp.getResponsable().getTelephone());
-        cadd.setPromptText(imp.getResponsable().getAdresse());
+        cnm.setPromptText(StaticResponsable.getNom());
+        cpr.setPromptText(StaticResponsable.getPrenom());
+        cmail.setPromptText(StaticResponsable.getEmail());
+        ctel.setPromptText(StaticResponsable.getTelephone());
+        cadd.setPromptText(StaticResponsable.getAdresse());
 
     }
 
@@ -81,13 +83,13 @@ MetierImpl imp =new MetierImpl();
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setContentText("entrez votre mot de passe");
             alert.show();
-        } else  if(anpss.getText().equals(imp.getResponsable().getPassword())){
+        } else  if(anpss.getText().equals(StaticResponsable.getPassword())){
              if(noump.getText().equals("")) {
                  Alert alert=new Alert(Alert.AlertType.ERROR);
                  alert.setContentText("entrez un nouveau mot de passe");
                  alert.show();
              }else{
-                 Responsable responsable=imp.getResponsable();
+                 Responsable responsable=StaticResponsable;
                  responsable.setPassword(noump.getText());
                  imp.modifierlesinformations(responsable);
                  Alert alert=new Alert(Alert.AlertType.INFORMATION);

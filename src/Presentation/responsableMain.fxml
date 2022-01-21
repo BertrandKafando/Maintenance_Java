@@ -7,9 +7,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -55,7 +55,7 @@
             <TableColumn fx:id="tmps" prefWidth="116.0" text="Temps" />
         </columns>
       </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutY="23.0" stroke="#ddd9d9" strokeType="INSIDE" width="1307.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutY="23.0" stroke="#ddd9d9" strokeType="INSIDE" width="1218.0" />
       <Label layoutX="14.0" layoutY="33.0" text="Administrer les interventions">
          <font>
             <Font name="Cambria" size="24.0" />
@@ -78,11 +78,11 @@
             <Font name="Cambria" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1216.0" layoutY="72.0" mnemonicParsing="false" onAction="#compte" text="compte" />
+      <Button contentDisplay="RIGHT" layoutX="1218.0" layoutY="81.0" mnemonicParsing="false" onAction="#compte" prefHeight="40.0" prefWidth="100.0" text="mon compte" />
       <ComboBox layoutX="1002.0" layoutY="684.0" prefWidth="150.0" />
       <Button layoutX="1173.0" layoutY="683.0" mnemonicParsing="false" onAction="#rechercher" text="rechercher" />
-      <Circle fill="DODGERBLUE" layoutX="1247.0" layoutY="48.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button layoutX="4.0" layoutY="476.0" mnemonicParsing="false" onAction="#btnAjouterMateriel" text="Ajouter du materiel à un ordre de travail" />
+      <Button layoutX="4.0" layoutY="476.0" mnemonicParsing="false" onAction="#btnAjouterMateriel" prefHeight="44.0" prefWidth="205.0" text="Ajouter du materiel à un ordre de travail" />
+      <ImageView fx:id="img" fitHeight="49.0" fitWidth="106.0" layoutX="1242.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
 </AnchorPane>

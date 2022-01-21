@@ -27,7 +27,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginController implements Initializable {
+public class
+LoginController implements Initializable {
     metier.MetierImpl metier= new  metier.MetierImpl();
     @FXML private TextField mail;
     @FXML private TextField password;  // = new JPasswordField(20);

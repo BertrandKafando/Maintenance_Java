@@ -1,18 +1,18 @@
 package metier;
 
-/*import javax.mail.*;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger; */
+import java.util.logging.Logger;
 
 public class EnvoiMail {
     public static void main(String[] args) {
         System.out.println("me");
     }
 
-    /*public static void sendMail(String recepteur) throws MessagingException {
+    public static void sendMail(String recepteur) throws MessagingException {
         System.out.println("Envoi en cours...");
 
         Properties properties = new Properties();
@@ -48,6 +48,6 @@ public class EnvoiMail {
             Logger.getLogger(EnvoiMail.class.getName()).log(Level.SEVERE,null,ex);
         }
         return null;
-    } */
+    }
 
 }
