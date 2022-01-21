@@ -65,7 +65,7 @@ public class ControllerResponsable  implements Initializable {
         img.setImage(nw);
 
 
-        liste.addAll(metierip.getAllOrdreTravail());
+        liste.setAll(metierip.getAllOrdreTravail());
         tablev.setItems(liste);
 
 
