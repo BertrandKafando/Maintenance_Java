@@ -44,6 +44,8 @@ public class OrdreTravail {
         this.entreprise = entreprise;
     }
 
+    public OrdreTravail() {
+    }
 
     public OrdreTravail(int numOrdreTravail, int priorite) {
         this.numOrdreTravail = numOrdreTravail;

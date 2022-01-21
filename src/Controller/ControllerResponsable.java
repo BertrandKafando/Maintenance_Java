@@ -65,7 +65,7 @@ public class ControllerResponsable  implements Initializable {
         img.setImage(nw);
 
 
-        liste.addAll(metierip.getAllOrdreTravail());
+        liste.setAll(metierip.getAllOrdreTravail());
         tablev.setItems(liste);
 
 
@@ -75,7 +75,7 @@ public class ControllerResponsable  implements Initializable {
         Stage st=new Stage();
        try {
             AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/newordre.fxml"));
-            Scene scn=new Scene(pane,800,600);
+            Scene scn=new Scene(pane);
             st.setScene(scn);
             st.setTitle("remplir");
             st.initModality(Modality.WINDOW_MODAL);
@@ -96,7 +96,7 @@ public class ControllerResponsable  implements Initializable {
            Stage st=new Stage();
                 try {
                     AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/modifierordre.fxml"));
-                    Scene scn=new Scene(pane,1200,600);
+                    Scene scn=new Scene(pane);
                     st.setScene(scn);
                     st.setTitle("remplir");
                     st.initModality(Modality.WINDOW_MODAL);
@@ -131,19 +131,7 @@ public class ControllerResponsable  implements Initializable {
 
 
 
-    public void intervenant(ActionEvent event){
-        Stage st=new Stage();
-        try {
-            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/gestion_intervenant.fxml"));
-            Scene scn=new Scene(pane,700,500);
-            st.setScene(scn);
-            st.setTitle("Intervenants");
-            st.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-    }
 
     public void exporter(ActionEvent event){
         Stage st=new Stage();
@@ -162,7 +150,7 @@ public class ControllerResponsable  implements Initializable {
         Stage st=new Stage();
         try {
             AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/compte.fxml"));
-            Scene scn=new Scene(pane,800,600);
+            Scene scn=new Scene(pane);
             st.setScene(scn);
             st.setTitle("Administrateur");
             st.initModality(Modality.WINDOW_MODAL);
@@ -178,7 +166,7 @@ public class ControllerResponsable  implements Initializable {
         Stage st=new Stage();
         try {
             AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/diagramme.fxml"));
-            Scene scn=new Scene(pane,1000,600);
+            Scene scn=new Scene(pane);
             st.setScene(scn);
             st.setTitle("Diagramme");
             st.show();
@@ -187,18 +175,7 @@ public class ControllerResponsable  implements Initializable {
         }
 
     }
-    public  void materiel(ActionEvent event){
-        Stage st=new Stage();
-        try {
-            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/materiel.fxml"));
-            Scene scn=new Scene(pane,1000,600);
-            st.setScene(scn);
-            st.setTitle("Ressources");
-            st.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void btnAjouterMateriel(){
         Stage st=new Stage();

@@ -7,8 +7,8 @@ import javafx.stage.Stage;
 public class ApplicationJava extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AnchorPane pane= FXMLLoader.load(getClass().getResource("Presentation/responsableMain.fxml"));
-        Scene sc=new Scene(pane,1400,800);
+        AnchorPane pane= FXMLLoader.load(getClass().getResource("Presentation/mainview.fxml"));
+        Scene sc=new Scene(pane);
         primaryStage.setScene(sc);
         primaryStage.show();
     }
