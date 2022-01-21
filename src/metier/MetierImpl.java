@@ -86,7 +86,7 @@ public class MetierImpl implements IMetier{
     public void modifierOrdreTravail(OrdreTravail ot) {
         Connection conn = SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,typeService=?,description=?,temps=?,budjet=?,priority=?,etat=?,id_responsable=?,id_intervenant=?,id_entreprise=?  where numOrdreTravail=?");
+            PreparedStatement pstm = conn.prepareStatement("update ordretravail set date=?,typeService=?,description=?,temps=?,budget=?,priority=?,etat=?,id_responsable=?,id_intervenant=?,id_entreprise=?  where numOrdreTravail=?");
             pstm.setDate(1, new Date(ot.getDate().getTime()));
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
@@ -632,7 +632,6 @@ public class MetierImpl implements IMetier{
                     if (rs.getString(7).equals(password)) {
                         StaticIntervenant = new Intervenant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                         test = 1;
-<<<<<<< HEAD
                     }
                     else test = -1;
                 } else if (interOrResp.equals("Responsable")) {
@@ -648,12 +647,10 @@ public class MetierImpl implements IMetier{
                         else test = -1;
                     }
 
-=======
                     } else test = -1;
->>>>>>> 3c3a2645d21e0fc96850d2c1c10790df45e0a970
-                }
 
-            } else if (interOrResp.equals("responsable")) {
+
+            } else if (interOrResp.equals("Responsable")) {
                 PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");
                 pstm1.setString(1, email);
                 ResultSet rs = pstm1.executeQuery();
