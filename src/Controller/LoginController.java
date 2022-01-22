@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static Controller.ApplicationJavaFx2.primaryStage2;
+
 public class
 LoginController implements Initializable {
     metier.MetierImpl metier= new  metier.MetierImpl();
@@ -83,12 +85,12 @@ LoginController implements Initializable {
                  stage2 = new Stage();
                  Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/pp_intervenant.fxml"));
                  stage2.setScene(new Scene(root));
-                 stage2.setTitle("");
-                 stage2.initModality(Modality.WINDOW_MODAL);
-                // stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+                 stage2.setTitle("Page Principale Intervenant");
+
                  stage2.show();
-                 mail.clear();
-                 password.clear();
+                 primaryStage2.close();
+                // mail.clear();
+                // password.clear();
 
              }
              else{
@@ -96,10 +98,10 @@ LoginController implements Initializable {
                  Stage stage = new Stage();
                  Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/mainview.fxml"));
                  stage.setScene(new Scene(root));
-                 stage.setTitle("");
-                 stage.initModality(Modality.WINDOW_MODAL);
-                 // stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+                 stage.setTitle("Page Principale Responsable");
+
                  stage.show();
+                 primaryStage2.close();
 
              }
         }
