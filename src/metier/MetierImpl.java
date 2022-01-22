@@ -587,11 +587,6 @@ public class MetierImpl implements IMetier{
                     }
 
                     } else test = -1;
-<<<<<<< HEAD
-
-=======
->>>>>>> 8da8ca788488666594d5ab9b2580d09a92d83d0b
-
 
             } else if (interOrResp.equals("Responsable")) {
                 PreparedStatement pstm1 = conn.prepareStatement("select * from responsable where email = ?");

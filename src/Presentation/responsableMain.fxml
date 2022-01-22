@@ -12,15 +12,15 @@
 
 <AnchorPane prefHeight="632.0" prefWidth="1072.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerResponsable">
    <children>
-      <TableView fx:id="tablev" layoutX="14.0" layoutY="75.0" prefHeight="472.0" prefWidth="794.0">
+      <TableView fx:id="tablev" layoutX="14.0" layoutY="75.0" prefHeight="472.0" prefWidth="936.0">
         <columns>
-          <TableColumn fx:id="service" prefWidth="103.00003051757812" text="Service" />
-          <TableColumn fx:id="des" prefWidth="165.0" text="Description" />
-            <TableColumn fx:id="pri" prefWidth="67.0" text="priorité" />
-            <TableColumn fx:id="intervenant" prefWidth="116.0" text="Intervenant" />
-            <TableColumn fx:id="entr" prefWidth="158.0" text="Entreprise" />
-            <TableColumn fx:id="etat" prefWidth="83.0" text="Etat" />
-            <TableColumn fx:id="tmps" prefWidth="89.0" text="Temps" />
+          <TableColumn fx:id="service" prefWidth="135.0" text="Service" />
+          <TableColumn fx:id="des" prefWidth="178.0" text="Description" />
+            <TableColumn fx:id="pri" prefWidth="118.0" text="priorité" />
+            <TableColumn fx:id="intervenant" prefWidth="156.0" text="Intervenant" />
+            <TableColumn fx:id="entr" prefWidth="152.0" text="Entreprise" />
+            <TableColumn fx:id="etat" prefWidth="69.0" text="Etat" />
+            <TableColumn fx:id="tmps" prefWidth="127.0" text="Temps" />
         </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="14.0" layoutY="8.0" stroke="#ddd9d9" strokeType="INSIDE" width="946.0" />
@@ -29,20 +29,20 @@
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="819.0" layoutY="95.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="32.0" prefWidth="97.0" text="Nouveau" />
-      <Button layoutX="819.0" layoutY="170.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="32.0" prefWidth="97.0" text="Supprimer">
+      <Button layoutX="79.0" layoutY="563.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="32.0" prefWidth="97.0" text="Nouveau" />
+      <Button layoutX="236.0" layoutY="561.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="32.0" prefWidth="107.0" text="Supprimer">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="819.0" layoutY="248.0" mnemonicParsing="false" onAction="#modifier" prefHeight="32.0" prefWidth="97.0" text="Modifier">
+      <Button layoutX="385.0" layoutY="563.0" mnemonicParsing="false" onAction="#modifier" prefHeight="32.0" prefWidth="124.0" text="Modifier">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
       <Button contentDisplay="RIGHT" layoutX="960.0" layoutY="75.0" mnemonicParsing="false" onAction="#compte" prefHeight="40.0" prefWidth="107.0" text="mon compte" />
-      <ComboBox layoutX="825.0" layoutY="322.0" prefHeight="28.0" prefWidth="97.0" />
-      <Button layoutX="825.0" layoutY="396.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="32.0" prefWidth="97.0" text="rechercher" />
+      <ComboBox layoutX="574.0" layoutY="565.0" prefHeight="28.0" prefWidth="97.0" />
+      <Button layoutX="701.0" layoutY="561.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="32.0" prefWidth="97.0" text="rechercher" />
       <ImageView fx:id="img" fitHeight="49.0" fitWidth="87.0" layoutX="985.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
