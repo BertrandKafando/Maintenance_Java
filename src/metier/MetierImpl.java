@@ -43,7 +43,7 @@ public class MetierImpl implements IMetier{
     public void ajouterOrdreTravail(OrdreTravail ot) {
         Connection conn= SingletonConnexionDB.getConnection();
         try {
-            PreparedStatement pstm=conn.prepareStatement("insert into ordreTravail(date,typeService,description,temps,budjet,priority,etat,id_responsable,id_intervenant,id_entreprise) values (?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm=conn.prepareStatement("insert into ordreTravail(date,typeService,description,temps,budget,priority,etat,id_responsable,id_intervenant,id_entreprise) values (?,?,?,?,?,?,?,?,?,?)");
             pstm.setDate(1,ot.getDate());
             pstm.setString(2,ot.getTypeService());
             pstm.setString(3,ot.getDescription());
