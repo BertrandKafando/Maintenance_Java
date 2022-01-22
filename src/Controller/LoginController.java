@@ -90,7 +90,6 @@ LoginController implements Initializable {
                  mail.clear();
                  password.clear();
 
-
              }
              else{
 

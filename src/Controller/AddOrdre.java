@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -40,10 +41,10 @@ public class AddOrdre implements Initializable {
             FXCollections.observableArrayList();
     @FXML ObservableList<String> services =
             FXCollections.observableArrayList(
-                    "reglage",
-                    "setting",
-                    "maintenance",
-                    "nothing"
+                    "Reglage",
+                    "Setting",
+                    "Maintenance",
+                    "Mise à jour"
             );
 
     @Override
@@ -66,6 +67,11 @@ public class AddOrdre implements Initializable {
         Entreprise ese = new Entreprise(eseNom.getText(),eseTel.getText(),eseEmail.getText(),eseAdresse.getText());
         metier.ajouterEntreprise(ese);
         updateListEntreprises();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès d'ajout");
+        //alert.setHeaderText("Results:");
+        alert.setContentText("L'entreprise " + eseNom.getText() + "a été ajoutée");
+        alert.showAndWait();
 
     }
     public void updateListEntreprises(){
@@ -85,6 +91,11 @@ public class AddOrdre implements Initializable {
 
         try {
             EnvoiMail.sendMail(metier.nameInterToObject(name[0]).getEmail());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Enregistrement effectué!");
+            //alert.setHeaderText("Results:");
+            alert.setContentText("L'ordre de travail est bien ajouté\n Un email de notification est envoyé au intervenant concerné");
+            alert.showAndWait();
         } catch (MessagingException e) {
             e.printStackTrace();
         }
