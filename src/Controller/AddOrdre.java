@@ -90,7 +90,7 @@ public class AddOrdre implements Initializable {
         metier.ajouterOrdreTravail(ot);
 
         try {
-            EnvoiMail.sendMail(metier.nameInterToObject(name[0]).getEmail());
+            EnvoiMail.sendMail(metier.nameInterToObject(name[0]));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Enregistrement effectué!");
             //alert.setHeaderText("Results:");

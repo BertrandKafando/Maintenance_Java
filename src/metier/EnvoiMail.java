@@ -12,7 +12,7 @@ public class EnvoiMail {
         System.out.println("me");
     }
 
-    public static void sendMail(String recepteur) throws MessagingException {
+    public static void sendMail(Intervenant it) throws MessagingException {
         System.out.println("Envoi en cours...");
 
         Properties properties = new Properties();
@@ -31,18 +31,18 @@ public class EnvoiMail {
                 return new PasswordAuthentication(monAdresseEmail,password);
             }
         });
-        Message message = prepareMessage(session, monAdresseEmail, recepteur);
+        Message message = prepareMessage(session, monAdresseEmail, it);
         Transport.send(message);
         System.out.println("Message envoyé avec succès");
     }
 
-    private static Message prepareMessage(Session session, String monAdresseEmail, String recepteur){
+    private static Message prepareMessage(Session session, String monAdresseEmail, Intervenant it){
         try {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(monAdresseEmail));
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepteur));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(it.getEmail()));
         message.setSubject("Nouvel ordre de travail");
-        message.setText("Bonjour,\n Un nouvel ordre de travail vous a été assigné.\n\n Veuillez vous connectez pour voir les détails.");
+        message.setText("Bonjour " +it+",\n Un nouvel ordre de travail vous a été assigné.\n\n Veuillez vous connectez pour voir les détails.");
         return message;
         } catch (Exception ex) {
             Logger.getLogger(EnvoiMail.class.getName()).log(Level.SEVERE,null,ex);

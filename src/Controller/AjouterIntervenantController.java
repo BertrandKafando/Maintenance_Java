@@ -44,7 +44,7 @@ public class AjouterIntervenantController {
         listeIts.addAll(metier.getAllInter());
 
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("L'intervenant a été ajouté avec succès");
+        alert.setContentText("L'intervenant a été ajouté avec succès\n\nUn mail lui a été envoyé!");
         alert.show();
 
         try {

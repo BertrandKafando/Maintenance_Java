@@ -7,6 +7,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static metier.MetierImpl.StaticResponsable;
+
 public class EnvoiMailNewIntervenant {
     public static void sendMail(Intervenant it) throws MessagingException {
         System.out.println("Envoi en cours...");
@@ -38,7 +40,10 @@ public class EnvoiMailNewIntervenant {
             message.setFrom(new InternetAddress(monAdresseEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(it.getEmail()));
             message.setSubject("Bienvenue à MaintenanceApp");
-            message.setText("Bonjour " +it+"\n\n Nous vous souhaitons la bienvenue dans la grande famille MaintenanceAPP\n\nLe Responsable ");
+            message.setText("Bonjour " +it+",\n\n Nous vous souhaitons la bienvenue dans la grande famille MaintenanceAPP." +
+                    "\n\n Ci dessous les informations pour vous connecter à MaintenanceApp:\n-Email : "+it.getEmail()+"\n" +
+                    "-Mot de passe : "+it.getPassword()+"\n\nVeuillez changez votre mot de passe dès votre première connexion.\n\n" +
+                    ""+StaticResponsable+", le Responsable.");
             return message;
         } catch (Exception ex) {
             Logger.getLogger(EnvoiMail.class.getName()).log(Level.SEVERE,null,ex);
