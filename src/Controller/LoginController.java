@@ -95,7 +95,7 @@ LoginController implements Initializable {
              else{
 
                  Stage stage = new Stage();
-                 Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/responsableMain.fxml"));
+                 Parent root = FXMLLoader.load(LoginController.class.getResource("../Presentation/mainview.fxml"));
                  stage.setScene(new Scene(root));
                  stage.setTitle("");
                  stage.initModality(Modality.WINDOW_MODAL);
