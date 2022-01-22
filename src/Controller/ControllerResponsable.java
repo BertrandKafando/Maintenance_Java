@@ -170,19 +170,6 @@ public class ControllerResponsable  implements Initializable {
         }
     }
 
-    public  void planification(ActionEvent event){
-        Stage st=new Stage();
-        try {
-            AnchorPane pane= FXMLLoader.load(getClass().getResource("../Presentation/diagramme.fxml"));
-            Scene scn=new Scene(pane);
-            st.setScene(scn);
-            st.setTitle("Diagramme");
-            st.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     public void btnAjouterMateriel(){
