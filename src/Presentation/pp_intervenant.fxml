@@ -7,71 +7,71 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntervenantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1070.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntervenantController">
    <children>
-      <Label fx:id="labelBienvenue" layoutX="220.0" layoutY="23.0" text="Bienvenue sur votre Espace " textFill="#141cbc">
+      <Label fx:id="labelBienvenue" layoutX="220.0" layoutY="23.0" text="Bienvenue sur votre Espace ">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="162.0" layoutY="51.0" text="Ici vous verrez les ordres de travail qui vous sont assignés" textFill="#2c0dab">
+      <Label layoutX="162.0" layoutY="51.0" text="Ici vous verrez les ordres de travail qui vous sont assignés">
           <font>
-              <Font name="System Bold" size="13.0" />
+              <Font name="System Bold" size="17.0" />
           </font>
       </Label>
-      <TableView fx:id="tableOts" layoutX="4.0" layoutY="99.0" prefHeight="259.0" prefWidth="625.0">
+      <TableView fx:id="tableOts" layoutX="28.0" layoutY="116.0" prefHeight="259.0" prefWidth="690.0">
         <columns>
-          <TableColumn fx:id="otService" prefWidth="117.0" style="-fx-alignment: center" text="Service" />
-          <TableColumn fx:id="otDescription" prefWidth="125.0" style="-fx-alignment: center" text="Description" />
-            <TableColumn fx:id="otPriorite" prefWidth="126.0" style="-fx-alignment: center" text="Priorité" />
-            <TableColumn fx:id="otEntreprise" prefWidth="127.0" style="-fx-alignment: center" text="Entreprise" />
-            <TableColumn fx:id="otResponsable" prefWidth="127.0" style="-fx-alignment: center" text="Responsable" />
+          <TableColumn fx:id="otService" prefWidth="127.0" style="-fx-alignment: center" text="Service" />
+          <TableColumn fx:id="otDescription" prefWidth="142.0" style="-fx-alignment: center" text="Description" />
+            <TableColumn fx:id="otPriorite" prefWidth="144.0" style="-fx-alignment: center" text="Priorité" />
+            <TableColumn fx:id="otEntreprise" prefWidth="140.0" style="-fx-alignment: center" text="Entreprise" />
+            <TableColumn fx:id="otResponsable" prefWidth="136.0" style="-fx-alignment: center" text="Responsable" />
         </columns>
       </TableView>
-      <Button layoutX="618.0" layoutY="18.0" mnemonicParsing="false" onAction="#modifierInfosPerso" prefHeight="29.0" prefWidth="260.0" text="Modifiez vos informations personnelles" textFill="#036810">
+      <Button layoutX="761.0" layoutY="23.0" mnemonicParsing="false" onAction="#modifierInfosPerso" prefHeight="31.0" prefWidth="262.0" style="-fx-background-color: #8A2BE2;" text="Modifiez vos informations personnelles" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="661.0" layoutY="136.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="29.0" prefWidth="191.0" text="Marquer comme Terminé" textFill="#1f0bd7">
+      <Button layoutX="761.0" layoutY="155.0" mnemonicParsing="false" onAction="#modifierEtat" prefHeight="31.0" prefWidth="262.0" style="-fx-background-color: #6868ca;" text="Marquer comme Terminé" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="717.0" layoutY="63.0" mnemonicParsing="false" onAction="#quitter" text="Quitter" textFill="#046b1c">
+      <Button layoutX="818.0" layoutY="78.0" mnemonicParsing="false" onAction="#quitter" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #ff0080;" text="Quitter" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
 
-      <Label layoutX="14.0" layoutY="77.0" text="En cours">
+      <Label layoutX="17.0" layoutY="93.0" text="En cours">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="12.0" layoutY="383.0" text="Terminés" textFill="#384001">
+      <Label layoutX="13.0" layoutY="393.0" text="Terminés" textFill="#384001">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="tableOts2" layoutX="2.0" layoutY="404.0" prefHeight="184.0" prefWidth="625.0">
+      <TableView fx:id="tableOts2" layoutX="28.0" layoutY="418.0" prefHeight="208.0" prefWidth="690.0">
         <columns>
-          <TableColumn fx:id="otService2" prefWidth="115.0" style="-fx-alignment: center" text="Service" />
-          <TableColumn fx:id="otDescription2" prefWidth="123.0" style="-fx-alignment: center" text="Description" />
-            <TableColumn fx:id="otPriorite2" prefWidth="137.0" style="-fx-alignment: center" text="Priorité" />
-            <TableColumn fx:id="otEntreprise2" prefWidth="127.0" style="-fx-alignment: center" text="Entreprise" />
-            <TableColumn fx:id="otResponsable2" prefWidth="122.0" style="-fx-alignment: center" text="Responsable" />
+          <TableColumn fx:id="otService2" prefWidth="126.0" style="-fx-alignment: center" text="Service" />
+          <TableColumn fx:id="otDescription2" prefWidth="141.0" style="-fx-alignment: center" text="Description" />
+            <TableColumn fx:id="otPriorite2" prefWidth="147.0" style="-fx-alignment: center" text="Priorité" />
+            <TableColumn fx:id="otEntreprise2" prefWidth="142.0" style="-fx-alignment: center" text="Entreprise" />
+            <TableColumn fx:id="otResponsable2" prefWidth="133.0" style="-fx-alignment: center" text="Responsable" />
         </columns>
       </TableView>
-      <Button layoutX="678.0" layoutY="528.0" mnemonicParsing="false" onAction="#mailbtn" text="Contacter un responsable" textFill="#6609c9">
+      <Button layoutX="762.0" layoutY="595.0" mnemonicParsing="false" onAction="#mailbtn" prefHeight="31.0" prefWidth="260.0" style="-fx-background-color: #8A2BE2;" text="Contacter un responsable" textFill="WHITE">
           <font>
-              <Font name="System Bold" size="13.0" />
+              <Font name="System Bold" size="15.0" />
           </font>
       </Button>
-      <Button layoutX="661.0" layoutY="428.0" mnemonicParsing="false" onAction="#modifierEtat2" text="Marquer comme non terminé" textFill="#3003ab">
+      <Button layoutX="763.0" layoutY="459.0" mnemonicParsing="false" onAction="#modifierEtat2" prefHeight="31.0" prefWidth="260.0" style="-fx-background-color: #6868ca;" text="Marquer comme non terminé" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button layoutX="662.0" layoutY="181.0" mnemonicParsing="false" onAction="#afficherDetails" text="Afficher les détails de l'orde" textFill="#0b9c2d">
+      <Button layoutX="764.0" layoutY="215.0" mnemonicParsing="false" onAction="#afficherDetails" prefHeight="31.0" prefWidth="260.0" style="-fx-background-color: #6868ca;" text="Afficher les détails de l'orde" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
    </children>

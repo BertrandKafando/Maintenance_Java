@@ -39,8 +39,7 @@ public class GestionIntervenantController implements Initializable {
     private TableColumn<Intervenant,String> itMail;
     @FXML
     private TableColumn<Intervenant,String> itAdresse;
-    @FXML
-    private TableColumn<Intervenant,String> itMdp;
+
 
    static ObservableList<Intervenant> listeIts= FXCollections.observableArrayList();
     private IMetier metier;
@@ -54,7 +53,7 @@ public class GestionIntervenantController implements Initializable {
         itTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         itMail.setCellValueFactory(new PropertyValueFactory<>("email"));
         itAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        itMdp.setCellValueFactory(new PropertyValueFactory<>("password"));
+
 
         metier = new MetierImpl();
 
