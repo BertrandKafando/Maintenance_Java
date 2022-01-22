@@ -113,7 +113,7 @@ MetierImpl imp =new MetierImpl();
         String tel=ctel.getText();
         String add=cadd.getText();
 
-        Responsable responsable=imp.getResponsable();
+        Responsable responsable=StaticResponsable;
          if(!nom.equals(""))  responsable.setNom(nom);
         System.out.println(nom);
         if(!prenom.equals(""))  responsable.setPrenom(prenom);
@@ -122,11 +122,11 @@ MetierImpl imp =new MetierImpl();
         if(!cadd.getText().equals("")) responsable.setAdresse(add);
         imp.modifierlesinformations(responsable);
 
-        cnm.setPromptText(imp.getResponsable().getNom());
-        cpr.setPromptText(imp.getResponsable().getPrenom());
-        cmail.setPromptText(imp.getResponsable().getEmail());
-        ctel.setPromptText(imp.getResponsable().getTelephone());
-        cadd.setPromptText(imp.getResponsable().getAdresse());
+        cnm.setPromptText(StaticResponsable.getNom());
+        cpr.setPromptText(StaticResponsable.getPrenom());
+        cmail.setPromptText(StaticResponsable.getEmail());
+        ctel.setPromptText(StaticResponsable.getTelephone());
+        cadd.setPromptText(StaticResponsable.getAdresse());
 
     }
 }

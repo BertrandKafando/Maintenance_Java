@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static metier.MetierImpl.StaticResponsable;
+
 public class AddOrdre implements Initializable {
      MetierImpl metier =new MetierImpl();
      //@FXML private TextField textService;
@@ -83,7 +85,7 @@ public class AddOrdre implements Initializable {
         //System.out.println(intervenant.getValue());
         Intervenant it = intervenant.getSelectionModel().getSelectedItem();
         //System.out.println( java.sql.Date.valueOf(date.getValue())+ service.getValue()+textDesc.getText()+ Integer.valueOf(textTemps.getText())+Double.valueOf(textBudget.getText())+Integer.valueOf(textPriority.getText())+ metier.getResponsable()+metier.nameInterToObject(name[1]));
-        OrdreTravail ot = new OrdreTravail(java.sql.Date.valueOf(date.getValue()), service.getValue(), textDesc.getText(), Integer.valueOf(textTemps.getText()), Double.valueOf(textBudget.getText()), Integer.valueOf(textPriority.getText()), false, metier.getResponsable(), it, metier.nameEntrepriseToObject(entreprise.getValue()));
+        OrdreTravail ot = new OrdreTravail(java.sql.Date.valueOf(date.getValue()), service.getValue(), textDesc.getText(), Integer.valueOf(textTemps.getText()), Double.valueOf(textBudget.getText()), Integer.valueOf(textPriority.getText()), false, StaticResponsable, it, metier.nameEntrepriseToObject(entreprise.getValue()));
         metier.ajouterOrdreTravail(ot);
 
         try {
