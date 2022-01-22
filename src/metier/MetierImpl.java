@@ -12,28 +12,6 @@ import java.util.List;
 public class MetierImpl implements IMetier{
     public  static Intervenant StaticIntervenant=null;
     public static Responsable StaticResponsable=null;
-
-
-    /* public List<OrdreTravail> getAllOrdreTravailSort(){
-
-        Connection conn = new SingletonConnexionDB().getConnection();
-        OrdreTravail ordreTravail=null;
-
-        try {
-            PreparedStatement pstm = conn.prepareStatement("select * from ordretravail");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-                //ordresTravail = new OrdreTravail(rs.getInt(1) ,rs.getDate(2) ,rs.getString(3) , rs.getString(4) ,rs.getInt(5),rs.getDouble(6),rs.getInt(7),rs.getBoolean(8), rs.getInt(9) , rs.getInt(10), rs.getInt(11));
-                ordreTravail = new OrdreTravail(rs.getInt(1), rs.getInt(7));
-                ordresTravail.add(ordreTravail);
-            }
-            Collections.sort(ordresTravail, new OrdrePriorityComparator());
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return ordresTravail;
-    }   */
     public void setPriorityOrdre(Date date){
         Connection conn= SingletonConnexionDB.getConnection();
         OrdreTravail ot=null;
@@ -451,27 +429,6 @@ public class MetierImpl implements IMetier{
         return entrprises;
 
     }
-    public List<Entreprise> getEntreprises() {
-        Connection connection=SingletonConnexionDB.getConnection();
-      List<Entreprise>liste=new ArrayList<>();
-        try{
-            PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
-            ResultSet res= stm.executeQuery();
-            while(res.next()){
-                Entreprise entreprise=null;
-                entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
-             entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
-             entreprise.setAdresse(res.getString(5));
-             liste.add(entreprise);
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        return liste;
-    }
-
     @Override
     public Intervenant searchInterById(int id) {
         Connection conn=SingletonConnexionDB.getConnection();
@@ -490,25 +447,7 @@ public class MetierImpl implements IMetier{
         }
         return inter;
     }
-        /*public List<Entreprise> getEntreprises() {
-            Connection connection=SingletonConnexionDB.getConnection();
-            List<Entreprise>liste=new ArrayList<>();
-            try{
-                PreparedStatement stm=connection.prepareStatement("select * from entreprise ");
-                ResultSet res= stm.executeQuery();
-                while(res.next()){
-                    Entreprise entreprise=new Entreprise();
-                    entreprise.setId_entr(res.getInt(1));entreprise.setNom(res.getString(2));
-                    entreprise.setEmail(res.getString(4));entreprise.setTelephone(res.getString(3));
-                    liste.add(entreprise);
-                }
 
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            return liste;
-        }*/
     @Override
     public Intervenant searchInterByName(String name) {
         Connection conn=SingletonConnexionDB.getConnection();

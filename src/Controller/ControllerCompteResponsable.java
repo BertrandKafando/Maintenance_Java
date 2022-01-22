@@ -83,7 +83,12 @@ MetierImpl imp =new MetierImpl();
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setContentText("entrez votre mot de passe");
             alert.show();
-        } else  if(anpss.getText().equals(StaticResponsable.getPassword())){
+        } else if(!anpss.getText().equals(StaticResponsable.getPassword())){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(" votre mot de passe erronée");
+            alert.show();
+        }
+        else  if(anpss.getText().equals(StaticResponsable.getPassword())){
              if(noump.getText().equals("")) {
                  Alert alert=new Alert(Alert.AlertType.ERROR);
                  alert.setContentText("entrez un nouveau mot de passe");
