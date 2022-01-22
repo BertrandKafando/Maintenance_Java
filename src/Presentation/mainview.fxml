@@ -20,5 +20,10 @@
            <fx:include fx:id="materiel" source="materiel.fxml" />
          </content>
       </Tab>
+    <Tab text="Diagramme de GANTT">
+      <content>
+        <fx:include fx:id="Gant" source="diagramme.fxml" />
+      </content>
+    </Tab>
   </tabs>
 </TabPane>

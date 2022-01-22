@@ -120,7 +120,7 @@ public class MetierImpl implements IMetier{
                     e=new Entreprise(rs2.getInt("ID"),rs2.getString("NOM"),rs2.getString("TELEPHONE"),rs2.getString("EMAIL"),rs2.getString("ADRESSE"));
                 }
                 OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
-                        rs.getInt("TEMPS"),rs.getDouble("BUDJET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
+                        rs.getInt("TEMPS"),rs.getDouble("BUDGET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }
         }catch (Exception e){
@@ -568,7 +568,7 @@ public class MetierImpl implements IMetier{
                 rs.next();
 
                 if (rs != null) {
-                    if (rs.getString(7).equals(password)) {
+                    if (rs.getString("password").equals(password)) {
                         StaticIntervenant = new Intervenant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                         test = 1;
                     }
