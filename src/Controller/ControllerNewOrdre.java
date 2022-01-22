@@ -17,6 +17,7 @@ public class ControllerNewOrdre extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../presentation/newordre.fxml"));
         Scene scene = new Scene(root);
+        primaryStage.setTitle("Ajout d'un nouvel ordre de travail");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
