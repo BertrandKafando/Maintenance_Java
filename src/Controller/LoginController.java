@@ -56,7 +56,7 @@ LoginController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Attention!");
             //alert.setHeaderText("Results:");
-            alert.setContentText("la choix de la profession est obligatoire");
+            alert.setContentText("Le choix de la profession est obligatoire");
             alert.showAndWait();
         }
         else if( metier.login(comboBox.getValue(), mail.getText(), password.getText())==0 || !matcher.matches() )
@@ -64,7 +64,7 @@ LoginController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Invalid email");
             //alert.setHeaderText("Results:");
-            alert.setContentText("email invalid");
+            alert.setContentText("Adresse email invalide");
             alert.showAndWait();
         }
         else if(metier.login(comboBox.getValue(), mail.getText(), password.getText())==-1)

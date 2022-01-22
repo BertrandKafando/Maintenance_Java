@@ -94,7 +94,7 @@ public class AddOrdre implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Enregistrement effectué!");
             //alert.setHeaderText("Results:");
-            alert.setContentText("L'ordre de travail est bien ajouté\n Un email de notification est envoyé au intervenant concerné");
+            alert.setContentText("L'ordre de travail est bien ajouté\n Un email de notification est envoyé à l'intervenant concerné");
             alert.showAndWait();
         } catch (MessagingException e) {
             e.printStackTrace();
