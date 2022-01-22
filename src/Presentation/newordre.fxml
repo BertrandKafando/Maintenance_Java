@@ -83,9 +83,9 @@
                 <ComboBox fx:id="entreprise" prefHeight="24.0" prefWidth="203.0" promptText="Choisir une entreprise" style="-fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
-        <Button layoutX="718.0" layoutY="388.0" mnemonicParsing="false" onAction="#addOrdreTravail" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #6868ca;" text="Enregistrer">
+        <Button layoutX="718.0" layoutY="388.0" mnemonicParsing="false" onAction="#addOrdreTravail" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #6868ca;" text="Enregistrer" textFill="#fffefe">
             <font>
-                <Font name="Cambria" size="18.0" />
+                <Font name="Cambria" size="14.0" />
             </font></Button>
         <Label layoutX="303.0" layoutY="54.0" prefHeight="53.0" prefWidth="429.0" text="Créer un Ordre de travail">
             <font>
@@ -129,9 +129,9 @@
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-        <Button layoutX="685.0" layoutY="651.0" mnemonicParsing="false" onAction="#addEse" prefHeight="29.0" prefWidth="124.0" style="-fx-background-color: #6868ca;" text="Ajouter">
+        <Button layoutX="685.0" layoutY="651.0" mnemonicParsing="false" onAction="#addEse" prefHeight="40.0" prefWidth="168.0" style="-fx-background-color: #6868ca;" text="Ajouter" textFill="#fffefe">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Button>
     </children>
 </AnchorPane>
