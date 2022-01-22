@@ -33,9 +33,9 @@ public class AddOrdre implements Initializable {
     @FXML private TextField eseEmail;
     @FXML private TextField eseAdresse;
     @FXML private ComboBox<String > entreprise;
-    @FXML private ComboBox<String > intervenant;
+    @FXML private ComboBox<Intervenant> intervenant = new ComboBox<>();
     @FXML private ComboBox<String > service;
-    @FXML ObservableList<String> intervenants =
+    @FXML ObservableList<Intervenant> intervenants =
             FXCollections.observableArrayList();
     @FXML ObservableList<String> entreprises =
             FXCollections.observableArrayList();
@@ -50,11 +50,8 @@ public class AddOrdre implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        for (Intervenant inter : metier.getAllInter()) {
-            intervenants.add(inter.toString());
-
-        }
-        intervenant.setItems(intervenants);
+        intervenants.addAll(metier.getAllInter());
+        intervenant.getItems().addAll(intervenants);
 
         for (Entreprise entreprise : metier.getAllEntreprise()) {
             entreprises.add(entreprise.getNom());
@@ -84,13 +81,13 @@ public class AddOrdre implements Initializable {
     public void addOrdreTravail(){
         //System.out.println(java.sql.Date.valueOf(date.getValue())+ service.getValue()+textDesc.getText()+ Integer.valueOf(textTemps.getText())+Double.valueOf(textBudget.getText())+Integer.valueOf(textPriority.getText())+false+ metier.getResponsable()+metier.nameInterToObject(textNom.getText())+metier.nameEntrepriseToObject(entreprise.getValue()));
         //System.out.println(intervenant.getValue());
-        String[] name = intervenant.getValue().split("\\s+");
+        Intervenant it = intervenant.getSelectionModel().getSelectedItem();
         //System.out.println( java.sql.Date.valueOf(date.getValue())+ service.getValue()+textDesc.getText()+ Integer.valueOf(textTemps.getText())+Double.valueOf(textBudget.getText())+Integer.valueOf(textPriority.getText())+ metier.getResponsable()+metier.nameInterToObject(name[1]));
-        OrdreTravail ot = new OrdreTravail(java.sql.Date.valueOf(date.getValue()), service.getValue(), textDesc.getText(), Integer.valueOf(textTemps.getText()), Double.valueOf(textBudget.getText()), Integer.valueOf(textPriority.getText()), false, metier.getResponsable(), metier.nameInterToObject(name[0]), metier.nameEntrepriseToObject(entreprise.getValue()));
+        OrdreTravail ot = new OrdreTravail(java.sql.Date.valueOf(date.getValue()), service.getValue(), textDesc.getText(), Integer.valueOf(textTemps.getText()), Double.valueOf(textBudget.getText()), Integer.valueOf(textPriority.getText()), false, metier.getResponsable(), it, metier.nameEntrepriseToObject(entreprise.getValue()));
         metier.ajouterOrdreTravail(ot);
 
         try {
-            EnvoiMail.sendMail(metier.nameInterToObject(name[0]));
+            EnvoiMail.sendMail(it);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Enregistrement effectué!");
             //alert.setHeaderText("Results:");
