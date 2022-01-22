@@ -12,7 +12,7 @@ public interface IMetier {
     void supprimerOrdreTravail(OrdreTravail ot);
     void setPriorityOrdre(Date date);
     List<OrdreTravail> getAllOrdreTravailSort();
-
+    List<OrdreTravail> getAllOrdreTravailParMC(String mot);
     List<OrdreTravail> getOrdreTravailIntervenant(Intervenant it);
     List<OrdreTravail> getAllOrdreTravail();
 

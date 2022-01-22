@@ -1,5 +1,7 @@
 package Controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,6 +45,8 @@ public class ControllerResponsable  implements Initializable {
     private TableColumn<OrdreTravail, Integer>tmps;
     @FXML
     private ImageView img;
+    @FXML
+    private TextField recherccher;
 
     public static OrdreTravail ord=null;
 
@@ -64,6 +69,12 @@ public class ControllerResponsable  implements Initializable {
         Image nw=  new Image(getClass().getResourceAsStream("../image/img_81837noir.png"));
         img.setImage(nw);
 
+          recherccher.textProperty().addListener(new ChangeListener<String>() {
+              @Override
+              public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                  liste.setAll(metierip.getAllOrdreTravailParMC(recherccher.getText()));
+              }
+          });
 
         liste.setAll(metierip.getAllOrdreTravail());
         tablev.setItems(liste);
@@ -123,9 +134,6 @@ public class ControllerResponsable  implements Initializable {
             alert.setContentText("Choisissez un ordre de travail à supprimer");
             alert.show();
         }
-
-    }
-    public  void rechercher(){
 
     }
 
