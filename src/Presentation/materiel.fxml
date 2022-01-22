@@ -10,18 +10,18 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MachinController">
    <children>
-      <TableView fx:id="tabeMateriel" layoutX="349.0" layoutY="351.0" prefHeight="236.0" prefWidth="404.0" style="-fx-border-style: solid;">
+      <TableView fx:id="tabeMateriel" layoutX="325.0" layoutY="331.0" prefHeight="284.0" prefWidth="456.0" style="-fx-border-style: solid;">
         <columns>
           <TableColumn fx:id="ClId" prefWidth="113.0" style="-fx-border-style: solid;" text="id" />
-          <TableColumn fx:id="ClDesignation" prefWidth="293.0" style="-fx-border-style: solid;" text="désignation" />
+          <TableColumn fx:id="ClDesignation" prefWidth="337.0" style="-fx-border-style: solid;" text="désignation" />
         </columns>
       </TableView>
-      <Button layoutX="568.0" layoutY="268.0" mnemonicParsing="false" onAction="#addMateriel" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: #6868ca;" text="Ajouter" textFill="WHITE">
+      <Button layoutX="577.0" layoutY="243.0" mnemonicParsing="false" onAction="#addMateriel" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: #6868ca;" text="Ajouter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="designation" layoutX="345.0" layoutY="267.0" prefHeight="43.0" prefWidth="205.0" promptText="Désignation de la machine" />
-      <Button layoutX="811.0" layoutY="598.0" mnemonicParsing="false" onAction="#deleteMateriel" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: #6868ca;" text="Supprimer" textFill="#f8f7f7">
+      <TextField fx:id="designation" layoutX="333.0" layoutY="244.0" prefHeight="43.0" prefWidth="205.0" promptText="Désignation de la machine" />
+      <Button layoutX="840.0" layoutY="600.0" mnemonicParsing="false" onAction="#deleteMateriel" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: #6868ca;" text="Supprimer" textFill="#f8f7f7">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
