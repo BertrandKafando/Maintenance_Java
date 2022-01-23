@@ -208,8 +208,7 @@ public class MetierImpl implements IMetier{
                     it=new Intervenant(rs3.getInt("id_intervenant"),rs3.getString("nom"),rs3.getString("prenom"),rs3.getString("email"),rs3.getString("telephone"),
                             rs3.getString("adresse"),rs3.getString("password"));
                 }
-
-                OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("DATE"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
+                OrdreTravail ot=new OrdreTravail(rs.getInt("numOrdreTravail"),rs.getDate("date"),rs.getString("TYPESERVICE"),rs.getString("DESCRIPTION"),
                         rs.getInt("TEMPS"),rs.getDouble("BUDGET"),rs.getInt("PRIORITY"),rs.getBoolean("ETAT"),r,it,e);
                 ordreTravails.add(ot);
             }

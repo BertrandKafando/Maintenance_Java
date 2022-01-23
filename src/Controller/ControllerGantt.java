@@ -67,8 +67,8 @@ MetierImpl imp=new MetierImpl();
           int i=0;
           for (int j=0;j<trs.size();j++){
               XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
-              dataSeries1.setName("ordre du "+trs.get(i).getDate());
-              dataSeries1.getData().add(new XYChart.Data<Number, String>(trs.get(j).getTemps(),trs.get(j).getIntervenant().getNom()));
+              dataSeries1.setName("ordre du "+ trs.get(j).getDate());
+              dataSeries1.getData().add(new XYChart.Data<Number, String>(trs.get(j).getTemps(),trs.get(j).getIntervenant().toString()));
               gantt.getData().add(dataSeries1);
               System.out.println(j);
           }
