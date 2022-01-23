@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MachinController">
+<AnchorPane prefHeight="700.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MachinController">
    <children>
       <TableView fx:id="tabeMateriel" layoutX="325.0" layoutY="331.0" prefHeight="284.0" prefWidth="456.0" style="-fx-border-style: solid;">
         <columns>

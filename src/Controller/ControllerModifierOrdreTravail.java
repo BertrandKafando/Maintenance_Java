@@ -17,6 +17,8 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+import static Controller.ControllerResponsable.liste;
+
 public class ControllerModifierOrdreTravail  implements Initializable {
     @FXML
     private TextField textDesc;
@@ -86,10 +88,11 @@ public class ControllerModifierOrdreTravail  implements Initializable {
         ord.setEntreprise(ent); ord.setIntervenant(it); ord.setTypeService(srv);
         metier.modifierOrdreTravail(ord);
 
-
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Vos informations ont été mises à jour avec succès");
         alert.show();
+
+        liste.setAll(metier.getAllOrdreTravail());
 
     }
 

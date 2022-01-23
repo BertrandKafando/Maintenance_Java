@@ -1,5 +1,6 @@
 package Controller;
 
+import com.sun.javafx.scene.control.skin.TableViewSkinBase;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -50,8 +51,8 @@ public class ControllerResponsable  implements Initializable {
 
     public static OrdreTravail ord=null;
 
-    MetierImpl metierip =new MetierImpl();
-    ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
+    MetierImpl metierip ;
+   public static ObservableList<OrdreTravail>liste= FXCollections.observableArrayList();
     public  static Responsable responsableS=null;
     static OrdreTravail staticOt;
 
@@ -68,6 +69,7 @@ public class ControllerResponsable  implements Initializable {
 
         Image nw=  new Image(getClass().getResourceAsStream("../image/img_81837noir.png"));
         img.setImage(nw);
+         metierip  = new MetierImpl();
 
           recherccher.textProperty().addListener(new ChangeListener<String>() {
               @Override
@@ -78,7 +80,6 @@ public class ControllerResponsable  implements Initializable {
 
         liste.setAll(metierip.getAllOrdreTravail());
         tablev.setItems(liste);
-
 
 
     }

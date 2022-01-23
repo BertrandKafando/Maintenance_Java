@@ -16,6 +16,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static Controller.ControllerResponsable.liste;
+
 public class ControllerGantt implements Initializable {
     @FXML
     private StackedBarChart<Number,String> gantt;
@@ -24,11 +26,29 @@ public class ControllerGantt implements Initializable {
     @FXML
     private NumberAxis xx;
 MetierImpl imp=new MetierImpl();
-
+    List<OrdreTravail>trs=imp.getAllOrdreTravail();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      List<OrdreTravail > ordres=imp.getAllOrdreTravail();
-      List<Intervenant> intervenants=imp.getAllInter();
+
+      rafraichir();
+        /*
+        while (it.hasNext()){
+            XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
+            dataSeries1.setName("ord"+i++);
+            dataSeries1.getData().add(new XYChart.Data<Number, String>(it.next().getTemps(),it.next().getIntervenant().getNom()));
+            gantt.getData().add(dataSeries1);
+            System.out.println(1);;
+        }*/
+
+      }
+      public void rafraichir(){
+
+        trs.clear();
+        trs= imp.getAllOrdreTravail();
+          gantt.getData().clear();
+          List<OrdreTravail > ordres=imp.getAllOrdreTravail();
+          List<Intervenant> intervenants=imp.getAllInter();
+
       /*
       for(int i=0;i<intervenants.size();i++){
           XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
@@ -43,24 +63,15 @@ MetierImpl imp=new MetierImpl();
 
 
        */
-        Iterator<OrdreTravail> it=ordres.iterator();
-        int i=0;
-        for (int j=0;j<ordres.size();j++){
-            XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
-            dataSeries1.setName("ordre du "+ordres.get(i).getDate());
-            dataSeries1.getData().add(new XYChart.Data<Number, String>(ordres.get(j).getTemps(),ordres.get(j).getIntervenant().getNom()));
-            gantt.getData().add(dataSeries1);
-            System.out.println(j);
-        }
-        /*
-        while (it.hasNext()){
-            XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
-            dataSeries1.setName("ord"+i++);
-            dataSeries1.getData().add(new XYChart.Data<Number, String>(it.next().getTemps(),it.next().getIntervenant().getNom()));
-            gantt.getData().add(dataSeries1);
-            System.out.println(1);;
-        }*/
-
+          Iterator<OrdreTravail> it=trs.iterator();
+          int i=0;
+          for (int j=0;j<trs.size();j++){
+              XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();
+              dataSeries1.setName("ordre du "+trs.get(i).getDate());
+              dataSeries1.getData().add(new XYChart.Data<Number, String>(trs.get(j).getTemps(),trs.get(j).getIntervenant().getNom()));
+              gantt.getData().add(dataSeries1);
+              System.out.println(j);
+          }
       }
 /*
         XYChart.Series<Number, String> dataSeries1 = new XYChart.Series<Number, String>();

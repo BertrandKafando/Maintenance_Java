@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static Controller.ControllerResponsable.liste;
 import static metier.MetierImpl.StaticResponsable;
 
 public class AddOrdre implements Initializable {
@@ -95,6 +96,7 @@ public class AddOrdre implements Initializable {
             //alert.setHeaderText("Results:");
             alert.setContentText("L'ordre de travail est bien ajouté\n Un email de notification est envoyé à l'intervenant concerné");
             alert.showAndWait();
+            liste.setAll(metier.getAllOrdreTravail());
         } catch (MessagingException e) {
             e.printStackTrace();
         }
